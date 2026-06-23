@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Marquee from 'react-fast-marquee';
 import TextType from '@/components/TextType';
@@ -8,92 +7,76 @@ import Navbar from '@/components/layout/Navbar';
 import Socials from '@/components/Socials';
 
 export default function Home() {
-  const imageRef = useRef<HTMLImageElement>(null);
-  const [translateY, setTranslateY] = useState(0);
-
-  useEffect(() => {
-    const updateTranslate = () => {
-      if (imageRef.current) {
-        const height = imageRef.current.offsetHeight;
-        // 40% of the image height (adjust percentage as needed)
-        setTranslateY(height * 0.4);
-      }
-    };
-
-    const img = imageRef.current;
-    
-    if (img) {
-      // Wait for image to load
-      if (img.complete) {
-        // Image is already cached/loaded
-        updateTranslate();
-      } else {
-        // Wait for load event
-        img.addEventListener('load', updateTranslate);
-      }
-      
-      // Update on window resize
-      window.addEventListener('resize', updateTranslate);
-    }
-
-    return () => {
-      if (img) {
-        img.removeEventListener('load', updateTranslate);
-      }
-      window.removeEventListener('resize', updateTranslate);
-    };
-  }, []);
-
   return (
-    <div className="bg-[#2E3F59] h-screen w-full flex flex-col justify-between relative overflow-hidden">
-      
+    <div className="bg-[#2E3F59] min-h-screen w-full flex flex-col relative overflow-x-hidden lg:h-auto h-270">
       <Navbar />
-      
-      <div className="overflow-hidden h-full">
+
+      <div className="pt-10 lg:pt-2">
         <Marquee speed={24} gradient={false} direction="right">
           <Image
             src="/bigName.svg"
             alt="Big Name"
             width={1200}
             height={800}
-            className="mr-32"
+            className="mr-24 lg:w-320 w-300"
+          />
+          <Image
+            src="/bigDot.svg"
+            alt="Big Dot"
+            width={100}
+            height={199}
+            className="mr-24 lg:w-10 w-10"
           />
           <Image
             src="/bigName.svg"
             alt="Big Name"
             width={1200}
             height={800}
-            className="mr-32"
+            className="mr-24 lg:w-320 w-300"
+          />
+          <Image
+            src="/bigDot.svg"
+            alt="Big Dot"
+            width={100}
+            height={199}
+            className="mr-24 lg:w-10 w-10"
           />
           <Image
             src="/bigName.svg"
             alt="Big Name"
             width={1200}
             height={800}
-            className="mr-32"
+            className="mr-24 lg:w-320 w-300"
+          />
+          <Image
+            src="/bigDot.svg"
+            alt="Big Dot"
+            width={100}
+            height={199}
+            className="mr-24 lg:w-10 w-10"
           />
           <Image
             src="/bigName.svg"
             alt="Big Name"
             width={1200}
             height={800}
-            className="mr-32"
+            className="mr-24 lg:w-320 w-300"
           />
           <Image
-            src="/bigName.svg"
-            alt="Big Name"
-            width={1200}
-            height={800}
-            className="mr-32"
+            src="/bigDot.svg"
+            alt="Big Dot"
+            width={100}
+            height={199}
+            className="mr-24 lg:w-10 w-10"
           />
         </Marquee>
-        <h1 className="uppercase text-3xl text-[#F3F9FF] px-10 py-4 hidden">
+        <h1 className="uppercase text-3xl text-[#F3F9FF] px-10 py-4 hidden lg:block">
           Open for Work
         </h1>
       </div>
 
-      <div className="pt-12 px-10 w-full flex-row justify-between items-center hidden lg:flex">
-        <h2 className="text-2xl font-medium text-[#F8D752] uppercase">
+      <div className="pt-18 px-10 pb-20 w-full flex-row lg:justify-between justify-center items-center flex z-10">
+        <h2 className="text-2xl font-medium text-[#F8D752] uppercase hidden lg:block">
           Get in Touch
         </h2>
         <TextType
@@ -109,16 +92,25 @@ export default function Home() {
           cursorCharacter="|"
           deletingSpeed={70}
           cursorBlinkDuration={0.6}
-          className="font-victory-striker-sans text-7xl text-[#F3F9FF] text-end leading-[1.5] tracking-wide whitespace-pre-line h-60"
+          className="font-victory-striker-sans lg:text-7xl text-6xl text-[#F3F9FF] lg:text-end text-center lg:pt-0 pt-52 leading-[1.5] tracking-wide whitespace-pre-line h-60"
         />
       </div>
 
-      <div className="px-10 pb-10 pt-14 w-full flex flex-row justify-between items-end z-10 h-80 overflow-auto">
+      <div className="absolute bottom-0 lg:px-10 px-5 lg:pb-10 pb-12 pt-14 w-full flex lg:flex-row flex-col lg:justify-between lg:items-end justify-center items-between z-15 overflow-auto overflow-x-hidden gap-10 lg:gap-0">
         <h3 className="uppercase text-[#F3F9FF] text-2xl font-medium flex-1 lg:flex justify-start hidden">
           New York | US
         </h3>
+
         <div className="flex-1 flex justify-center">
           <Socials />
+        </div>
+        <div className="lg:hidden flex justify-center">
+          <h3 className="uppercase text-[#F3F9FF] text-2xl font-medium flex-1 lg:flex justify-start">
+            NYC | US
+          </h3>
+          <h2 className="text-2xl font-medium text-[#F8D752] uppercase">
+            Get in Touch
+          </h2>
         </div>
         <h3 className="uppercase text-[#F3F9FF] text-2xl font-medium flex-1 lg:flex justify-end hidden">
           (Scroll)
@@ -126,14 +118,13 @@ export default function Home() {
       </div>
 
       <Image
-        ref={imageRef}
-        src="/titlePicture.png"
+        src="/titlePicture.svg"
         alt="Title Picture"
         width={1000}
         height={500}
         style={{
           filter: 'saturate(0.95) brightness(0.9) contrast(0.99)',
-          transform: `translateY(${translateY}px) translateX(-50%)`,
+          transform: ` translateX(-50%)`,
         }}
         className="absolute bottom-0 left-1/2 z-5 max-w-[1000px] overflow-clip h-auto"
       />
