@@ -12,49 +12,35 @@ export default function Home() {
           <Image
             src="/bigName.svg"
             alt="Big Name"
-            width={1000}
+            width={1200}
             height={800}
             className="mr-32"
           />
           <Image
             src="/bigName.svg"
             alt="Big Name"
-            width={1000}
+            width={1200}
             height={800}
             className="mr-32"
           />
           <Image
             src="/bigName.svg"
             alt="Big Name"
-            width={1000}
+            width={1200}
             height={800}
             className="mr-32"
           />
           <Image
             src="/bigName.svg"
             alt="Big Name"
-            width={1000}
+            width={1200}
             height={800}
             className="mr-32"
           />
           <Image
             src="/bigName.svg"
             alt="Big Name"
-            width={1000}
-            height={800}
-            className="mr-32"
-          />
-          <Image
-            src="/bigName.svg"
-            alt="Big Name"
-            width={1000}
-            height={800}
-            className="mr-32"
-          />
-          <Image
-            src="/bigName.svg"
-            alt="Big Name"
-            width={1000}
+            width={1200}
             height={800}
             className="mr-32"
           />
