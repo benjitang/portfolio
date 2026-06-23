@@ -20,3 +20,22 @@ export const socials = [
     url: 'https://www.instagram.com/benjamintang22/',
   },
 ];
+
+export const navLinks = [
+  {
+    name: 'Home',
+    href: '/',
+  },
+  {
+    name: 'About',
+    href: '/about',
+  },
+  {
+    name: 'Works',
+    href: '/works',
+  },
+  {
+    name: 'Contact',
+    href: '/contact',
+  },    
+]
