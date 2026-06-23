@@ -35,7 +35,7 @@ const Navbar = () => {
 
       {/* Full Screen Overlay */}
       {open && (
-        <div className="fixed inset-0 bg-[#2E3F59] bg-opacity-50 z-40 flex flex-col justify-center items-center lg:gap-20 gap-16 pt-26">
+        <div className="fixed inset-0 bg-[#2E3F59] bg-opacity-50 z-40 flex flex-col justify-center items-center lg:gap-20 gap-18 pt-26">
           <div className="flex flex-col lg:gap-9 gap-8">
             {navLinks.map((link) => (
               <a

@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 const Socials = () => {
   return (
-    <div className="text-white flex flex-row justify-between gap-8">
+    <div className="text-white flex flex-row justify-between gap-6 sm:gap-8">
       {socials.map((social) => (
         <a
           href={social.url}
