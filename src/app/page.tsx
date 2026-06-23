@@ -84,21 +84,23 @@ export default function Home() {
               <LinkArrowIcon className="w-7" />
             </div>
           </Link>
-          <TextType
-            text={[
-              'Full-Stack\nEngineer',
-              'Backend\nEngineer',
-              'Frontend\nEngineer',
-              'Data\nAnalyst',
-            ]}
-            typingSpeed={150}
-            pauseDuration={2000}
-            showCursor
-            cursorCharacter="|"
-            deletingSpeed={70}
-            cursorBlinkDuration={0.6}
-            className="font-victory-striker-sans lg:text-7xl text-6xl text-[#F3F9FF] lg:text-end text-center lg:pt-0 pt-0 leading-[1.5] tracking-wide whitespace-pre-line"
-          />
+          <div className="lg:h-60 h-auto">
+            <TextType
+              text={[
+                'Full-Stack\nEngineer',
+                'Backend\nEngineer',
+                'Frontend\nEngineer',
+                'Data\nAnalyst',
+              ]}
+              typingSpeed={150}
+              pauseDuration={2000}
+              showCursor
+              cursorCharacter="|"
+              deletingSpeed={70}
+              cursorBlinkDuration={0.6}
+              className="font-victory-striker-sans lg:text-7xl text-6xl text-[#F3F9FF] lg:text-end text-center lg:pt-0 pt-0 leading-[1.5] tracking-wide whitespace-pre-line"
+            />
+          </div>
         </div>
       </div>
 
