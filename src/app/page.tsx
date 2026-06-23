@@ -1,10 +1,12 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import Marquee from 'react-fast-marquee';
 import TextType from '@/components/TextType';
 import Navbar from '@/components/layout/Navbar';
 import Socials from '@/components/Socials';
+import { LinkArrowIcon } from '@/components/icons/LinkArrowIcon';
 
 export default function Home() {
   return (
@@ -76,9 +78,12 @@ export default function Home() {
       </div>
 
       <div className="pt-18 px-10 pb-20 w-full flex-row lg:justify-between justify-center items-center flex z-10">
-        <h2 className="text-2xl font-medium text-[#F8D752] uppercase hidden lg:block">
-          Get in Touch
-        </h2>
+        <Link href="/contact">
+          <div className="group text-2xl font-medium text-[#F8D752] uppercase hidden lg:flex flex-row items-center justify-center gap-4 hover:text-[#F3F9FF] transition-colors duration-300 ease-in-out cursor-pointer">
+            Get in Touch
+            <LinkArrowIcon className="w-7" />
+          </div>
+        </Link>
         <TextType
           text={[
             'Full-Stack\nEngineer',
@@ -108,9 +113,12 @@ export default function Home() {
           <h3 className="uppercase text-[#F3F9FF] text-2xl font-medium flex-1 lg:flex justify-start">
             NYC | US
           </h3>
-          <h2 className="text-2xl font-medium text-[#F8D752] uppercase">
-            Get in Touch
-          </h2>
+          <Link href="/contact">
+            <div className="cursor-pointer group hover:text-white text-2xl font-medium text-[#F8D752] uppercase flex flex-row items-center justify-center gap-3">
+              Get in Touch
+              <LinkArrowIcon className="w-7" />
+            </div>
+          </Link>
         </div>
         <h3 className="uppercase text-[#F3F9FF] text-2xl font-medium flex-1 lg:flex justify-end hidden">
           (Scroll)
