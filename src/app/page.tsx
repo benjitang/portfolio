@@ -1,13 +1,55 @@
+'use client';
+
+import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Marquee from 'react-fast-marquee';
 import TextType from '@/components/TextType';
 import Navbar from '@/components/layout/Navbar';
+import Socials from '@/components/Socials';
 
 export default function Home() {
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [translateY, setTranslateY] = useState(0);
+
+  useEffect(() => {
+    const updateTranslate = () => {
+      if (imageRef.current) {
+        const height = imageRef.current.offsetHeight;
+        // 40% of the image height (adjust percentage as needed)
+        setTranslateY(height * 0.4);
+      }
+    };
+
+    const img = imageRef.current;
+    
+    if (img) {
+      // Wait for image to load
+      if (img.complete) {
+        // Image is already cached/loaded
+        updateTranslate();
+      } else {
+        // Wait for load event
+        img.addEventListener('load', updateTranslate);
+      }
+      
+      // Update on window resize
+      window.addEventListener('resize', updateTranslate);
+    }
+
+    return () => {
+      if (img) {
+        img.removeEventListener('load', updateTranslate);
+      }
+      window.removeEventListener('resize', updateTranslate);
+    };
+  }, []);
+
   return (
     <div className="bg-[#2E3F59] h-screen w-full flex flex-col justify-between relative overflow-hidden">
+      
       <Navbar />
-      <div className="pt-">
+      
+      <div className="overflow-hidden h-full">
         <Marquee speed={24} gradient={false} direction="right">
           <Image
             src="/bigName.svg"
@@ -45,12 +87,12 @@ export default function Home() {
             className="mr-32"
           />
         </Marquee>
-        <h1 className="uppercase text-3xl text-[#F3F9FF] px-10 py-4">
-          {' '}
-          Open for Work{' '}
+        <h1 className="uppercase text-3xl text-[#F3F9FF] px-10 py-4 hidden">
+          Open for Work
         </h1>
       </div>
-      <div className="pt-12 px-10 w-full flex flex-row justify-between items-center">
+
+      <div className="pt-12 px-10 w-full flex-row justify-between items-center hidden lg:flex">
         <h2 className="text-2xl font-medium text-[#F8D752] uppercase">
           Get in Touch
         </h2>
@@ -67,21 +109,33 @@ export default function Home() {
           cursorCharacter="|"
           deletingSpeed={70}
           cursorBlinkDuration={0.6}
-          className="
-          font-victory-striker-sans text-7xl text-[#F3F9FF] text-end leading-[1.5] tracking-wide whitespace-pre-line h-60"
+          className="font-victory-striker-sans text-7xl text-[#F3F9FF] text-end leading-[1.5] tracking-wide whitespace-pre-line h-60"
         />
       </div>
-      <div className="px-10 pb-10 pt-14 w-full flex flex-row justify-between">
-        <h3 className="uppercase text-[#F3F9FF] text-2xl"> New York | US </h3>
-        <h3 className="uppercase text-[#F3F9FF] text-2xl"> (Scroll) </h3>
+
+      <div className="px-10 pb-10 pt-14 w-full flex flex-row justify-between items-end z-10 h-80 overflow-auto">
+        <h3 className="uppercase text-[#F3F9FF] text-2xl font-medium flex-1 lg:flex justify-start hidden">
+          New York | US
+        </h3>
+        <div className="flex-1 flex justify-center">
+          <Socials />
+        </div>
+        <h3 className="uppercase text-[#F3F9FF] text-2xl font-medium flex-1 lg:flex justify-end hidden">
+          (Scroll)
+        </h3>
       </div>
+
       <Image
+        ref={imageRef}
         src="/titlePicture.png"
         alt="Title Picture"
         width={1000}
         height={500}
-        style={{ filter: 'saturate(0.95) brightness(0.9) contrast(0.99)' }}
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 z-5 translate-y-[40%]"
+        style={{
+          filter: 'saturate(0.95) brightness(0.9) contrast(0.99)',
+          transform: `translateY(${translateY}px) translateX(-50%)`,
+        }}
+        className="absolute bottom-0 left-1/2 z-5 max-w-[1000px] overflow-clip h-auto"
       />
     </div>
   );
