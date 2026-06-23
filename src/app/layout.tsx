@@ -2,20 +2,12 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono, Source_Serif_4 } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+import Navbar from '@/components/layout/Navbar';
 
 const sourceSerif = Source_Serif_4({
   variable: '--font-source-serif',
   subsets: ['latin'],
+  weight: ['400', '600', '700'],
 });
 
 const neueMontreal = localFont({
@@ -45,9 +37,9 @@ const neueMontreal = localFont({
 });
 
 const victoryStrikerSans = localFont({
-  src: '../../public/fonts/victorystrikersans/VictoryStrikerSans-Regular.otf', 
+  src: '../../public/fonts/victorystrikersans/VictoryStrikerSans-Regular.otf',
   variable: '--font-victory-striker-sans',
-})
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -62,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${sourceSerif.variable} ${neueMontreal.variable} ${victoryStrikerSans.variable} h-full antialiased`}
+      className={`${sourceSerif.variable} ${neueMontreal.variable} ${victoryStrikerSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
