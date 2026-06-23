@@ -36,7 +36,7 @@ const HamburgerMenu = ({
 
   return (
     <button
-      className={`relative flex justify-center items-center bg-transparent border-none cursor-pointer transition-colors lg:px-[3.5em] px-4 ${className}`}
+      className={`relative flex justify-center items-center bg-transparent border-none cursor-pointer transition-colors lg:px-[3.5em] px-4 pb-3 lg:pb-8 ${className}`}
       style={{ width: size, height: size }}
       onClick={() => setOpen(!open)}
       onMouseEnter={() => setIsHovered(true)}

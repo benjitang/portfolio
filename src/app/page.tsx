@@ -111,7 +111,7 @@ export default function Home() {
         </div>
         <div className="lg:hidden flex justify-center">
           <h3 className="uppercase text-[#F3F9FF] text-2xl font-medium flex-1 lg:flex justify-start">
-            NYC | US
+            NYC
           </h3>
           <Link href="/contact">
             <div className="cursor-pointer group hover:text-white text-2xl font-medium text-[#F8D752] uppercase flex flex-row items-center justify-center gap-3">
