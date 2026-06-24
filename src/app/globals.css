@@ -123,6 +123,18 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+.simplebar-track.simplebar-vertical {
+    top: 0;
+    width: 20px;
+}
+
+.simplebar-vertical .simplebar-scrollbar:before {
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -135,6 +147,9 @@
   }
 
 
+  
+
+
 }
 
 @layer components {
@@ -145,5 +160,7 @@
   .icon-transition {
     @apply fill-white group-hover:fill-[#2E3F59] transition-colors duration-100 ease-in-out w-6 h-6 md:w-8 md:h-8
   }
+
+  
 
 }

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono, Source_Serif_4 } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
+import 'simplebar-react/dist/simplebar.min.css';
 import Navbar from '@/components/layout/Navbar';
 
 const sourceSerif = Source_Serif_4({
