@@ -54,7 +54,7 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
+  --background: #F3F9FF;
   --foreground: oklch(0.145 0 0);
   --font-sans: var(--font-neue-montreal);
   --card: oklch(1 0 0);
