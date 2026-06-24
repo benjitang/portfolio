@@ -39,3 +39,8 @@ export const navLinks = [
     href: '/contact',
   },    
 ]
+
+export const contactDetails = {
+  phone: "+1 (347) 520-7272",
+  email: "benjamin.work.tang@gmail.com"
+}
