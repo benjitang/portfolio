@@ -82,8 +82,8 @@ const Navbar = ({ fixed = false }: { fixed?: boolean }) => {
           setOpen={setOpen}
           size={44}
           barHeight={3}
-          color="#F8D752"
-          hoverColor="#F3F9FF"
+          color={fixed && !open ? '#FFFFFF' : '#F8D752'}
+          hoverColor={fixed && !open ? 'oklch(83.7% 0.128 66.29)' : '#F3F9FF'}
           activeColor="#F3F9FF"
           className="lg:hidden block"
           mixBlend={fixed}

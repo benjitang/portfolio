@@ -37,7 +37,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-10 pb-12 lg:pb-0">
             <h3 className="font-victory-striker-sans lg:text-5xl text-4xl">
               {' '}
               Business Details
@@ -48,7 +48,7 @@ const Contact = () => {
               <h5> Flushing, NY </h5>
             </div>
           </div>
-          <div className="w-full md:w-[80%] xl:w-full mx-auto pb-12 lg:pb-0">
+          <div className="w-full md:w-[80%] xl:w-full mx-auto">
             <Socials />
           </div>
         </div>
