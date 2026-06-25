@@ -1,3 +1,5 @@
+/* TODO: Fix the navbar so you cannot scroll when overlay open on the top screen*/ 
+
 'use client';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
@@ -44,6 +46,7 @@ const Navbar = ({ fixed = false }: { fixed?: boolean }) => {
         setScrolled(window.scrollY > 240);
       }
     };
+    
     handleScroll();
     const scrollElement = document.querySelector('.simplebar-content-wrapper');
     scrollElement?.addEventListener('scroll', handleScroll);
