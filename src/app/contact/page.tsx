@@ -1,5 +1,6 @@
 'use client';
 import ContactForm from '@/components/ContactForm';
+import { LinkArrowIcon } from '@/components/icons/LinkArrowIcon';
 import Navbar from '@/components/layout/Navbar';
 import Socials from '@/components/Socials';
 import { contactDetails } from '@/constants';
@@ -29,7 +30,10 @@ const Contact = () => {
                 Contact Details
               </h3>
               <div className="text-xl lg:text-2xl flex flex-col gap-5">
-                <h5> {contactDetails.email} </h5>
+                <div className="flex flex-row gap-2 lg:gap-3 cursor-pointer group hover:text-[#F8D752] transition-colors duration-300 ease-in-out">
+                  <h5> {contactDetails.email} </h5>{' '}
+                  <LinkArrowIcon className="w-6 lg:w-7 fill-white group-hover:fill-[#F8D752]" />
+                </div>
                 <h5> {contactDetails.phone} </h5>
               </div>
             </div>
