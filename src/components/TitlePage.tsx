@@ -13,7 +13,7 @@ export default function TitlePage() {
     <div className="bg-[#2E3F59] min-h-screen w-full flex flex-col relative overflow-x-hidden lg:h-auto h-270">
       <Navbar />
 
-      <div className="pt-10 lg:pt-1">
+      <div className="pt-10 lg:pt-1 h-70">
         <Marquee speed={24} gradient={false} direction="right">
           <Image
             src="/bigName.svg"
