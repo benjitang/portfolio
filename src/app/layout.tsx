@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import 'simplebar-react/dist/simplebar.min.css';
 import Navbar from '@/components/layout/Navbar';
+import { ScrollbarProvider } from '@/components/ScrollbarProvider';
 
 const sourceSerif = Source_Serif_4({
   variable: '--font-source-serif',
@@ -57,7 +58,10 @@ export default function RootLayout({
       lang="en"
       className={`${sourceSerif.variable} ${neueMontreal.variable} ${victoryStrikerSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="m-0 p-0 flex flex-col">
+        <Navbar fixed={true} />
+        <ScrollbarProvider>{children}</ScrollbarProvider>
+      </body>
     </html>
   );
 }
