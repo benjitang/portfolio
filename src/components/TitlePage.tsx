@@ -10,6 +10,7 @@ import { LinkArrowIcon } from '@/components/icons/LinkArrowIcon';
 
 const marqueeLogos = [
   { src: '/bigName.svg', alt: 'Benjamin Tang' },
+  { src: '/bigName.svg', alt: 'Benjamin Tang' },
 ];
 
 export default function TitlePage() {
@@ -18,7 +19,22 @@ export default function TitlePage() {
       <Navbar />
 
       <div className="pt-10 lg:pt-1 h-70">
-        <div style={{ height: '100%', position: 'relative', overflow: 'hidden' }}>
+        {/* Mobile */}
+        <div className="lg:hidden w-full h-60 relative overflow-hidden">
+          <LogoLoop
+            logos={marqueeLogos}
+            speed={32}
+            direction="right"
+            logoHeight={240}
+            gap={96}
+            hoverSpeed={28}
+            fadeOut={false}
+            ariaLabel="Benjamin Tang"
+          />
+        </div>
+
+        {/* Desktop */}
+        <div className="hidden lg:block w-full h-70 relative overflow-hidden">
           <LogoLoop
             logos={marqueeLogos}
             speed={32}
