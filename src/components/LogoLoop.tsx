@@ -1,3 +1,4 @@
+import { flightRouterStateSchema } from 'next/dist/server/app-render/types';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 export type LogoItem =
@@ -133,10 +134,7 @@ const useAnimationLoop = (
     const track = trackRef.current;
     if (!track) return;
 
-    const prefersReduced =
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReduced = false;
 
     const seqSize = isVertical ? seqHeight : seqWidth;
 
