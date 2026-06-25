@@ -2,11 +2,15 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import Marquee from 'react-fast-marquee';
+import LogoLoop from '@/components/LogoLoop';
 import TextType from '@/components/TextType';
 import Navbar from '@/components/layout/Navbar';
 import Socials from '@/components/Socials';
 import { LinkArrowIcon } from '@/components/icons/LinkArrowIcon';
+
+const marqueeLogos = [
+  { src: '/bigName.svg', alt: 'Benjamin Tang' },
+];
 
 export default function TitlePage() {
   return (
@@ -14,68 +18,23 @@ export default function TitlePage() {
       <Navbar />
 
       <div className="pt-10 lg:pt-1 h-70">
-        <Marquee speed={24} gradient={false} direction="right">
-          <Image
-            src="/bigName.svg"
-            alt="Big Name"
-            width={1200}
-            height={800}
-            className="mr-24 lg:w-320 w-300"
+        <div style={{ height: '100%', position: 'relative', overflow: 'hidden' }}>
+          <LogoLoop
+            logos={marqueeLogos}
+            speed={32}
+            direction="right"
+            logoHeight={270}
+            gap={96}
+            hoverSpeed={28}
+            fadeOut={false}
+            ariaLabel="Benjamin Tang"
           />
-          <Image
-            src="/bigDot.svg"
-            alt="Big Dot"
-            width={100}
-            height={199}
-            className="mr-24 lg:w-10 w-10"
-          />
-          <Image
-            src="/bigName.svg"
-            alt="Big Name"
-            width={1200}
-            height={800}
-            className="mr-24 lg:w-320 w-300"
-          />
-          <Image
-            src="/bigDot.svg"
-            alt="Big Dot"
-            width={100}
-            height={199}
-            className="mr-24 lg:w-10 w-10"
-          />
-          <Image
-            src="/bigName.svg"
-            alt="Big Name"
-            width={1200}
-            height={800}
-            className="mr-24 lg:w-320 w-300"
-          />
-          <Image
-            src="/bigDot.svg"
-            alt="Big Dot"
-            width={100}
-            height={199}
-            className="mr-24 lg:w-10 w-10"
-          />
-          <Image
-            src="/bigName.svg"
-            alt="Big Name"
-            width={1200}
-            height={800}
-            className="mr-24 lg:w-320 w-300"
-          />
-          <Image
-            src="/bigDot.svg"
-            alt="Big Dot"
-            width={100}
-            height={199}
-            className="mr-24 lg:w-10 w-10"
-          />
-        </Marquee>
+        </div>
         <h1 className="uppercase text-3xl text-[#F3F9FF] px-10 py-2 hidden lg:block">
           Open for Work
         </h1>
       </div>
+
       <div className="flex flex-1 flex-col lg:justify-center justify-end md:pb-53 pb-51 items-center lg:h-full lg:pb-20 lg:pt-8">
         <div className="px-10 w-full flex-row lg:justify-between justify-center items-center flex z-10">
           <Link href="/contact">
@@ -108,7 +67,6 @@ export default function TitlePage() {
         <h3 className="uppercase text-[#F3F9FF] text-2xl font-medium flex-1 lg:flex justify-start hidden">
           New York | US
         </h3>
-
         <div className="flex-1 flex justify-center">
           <Socials />
         </div>
@@ -135,7 +93,7 @@ export default function TitlePage() {
         height={500}
         style={{
           filter: 'saturate(0.95) brightness(0.9) contrast(0.99)',
-          transform: ` translateX(-50%)`,
+          transform: 'translateX(-50%)',
         }}
         className="absolute bottom-0 left-1/2 z-5 max-w-[1000px] overflow-clip h-auto"
       />
