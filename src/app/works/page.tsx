@@ -212,7 +212,7 @@ const Works = () => {
       <div className="flex justify-center py-20 pb-28">
         <button
           onClick={() => setShowMore(!showMore)}
-          className="font-medium text-2xl border border-[#354156] text-[#354156] px-10 py-5 rounded-full hover:bg-[#2E3F59] hover:text-[#F3F9FF] hover:border-[#2E3F59] transition-colors duration-300 ease-in-out cursor-pointer"
+          className="font-medium text-xl lg:text-2xl border border-[#354156] text-[#354156] px-10 py-5 rounded-full hover:bg-[#2E3F59] hover:text-[#F3F9FF] hover:border-[#2E3F59] transition-colors duration-300 ease-in-out cursor-pointer"
         >
           {showMore ? 'Show Less' : 'Load More Work'}
         </button>
