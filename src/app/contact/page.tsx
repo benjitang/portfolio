@@ -10,19 +10,19 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-[#2E3F59] text-[#F3F9FF] overflow-x-hidden my-auto">
       <Navbar />
-      <div className="px-[6%] mx-auto max-w-480 min-h-[calc(100vh-128px)] lg:min-h-[calc(100vh-160px)] pt-4 flex xl:flex-row flex-col gap-[10%] xl:items-center xl:pb-10 pb-12">
+      <div className="px-[6%] mx-auto max-w-480 min-h-[calc(100vh-128px)] lg:min-h-[calc(100vh-160px)] pt-4 flex xl:flex-row flex-col gap-[10%] xl:items-center xl:pb-10 pb-20">
         <div className="flex-2 flex flex-col justify-between items-between h-full">
           <div className="font-victory-striker-sans uppercase text-7xl xl:text-8xl flex flex-col xl:gap-12 gap-10 pt-8 xl:pt-4">
             <h2 className="text-[#61ACF0]"> Contact Me</h2>
             <h2 className="text-[#F3F9FF]"> Reach Out </h2>
           </div>
 
-          <div className="pt-18">
+          <div className="lg:pt-18 pt-24">
             <ContactForm />
           </div>
         </div>
 
-        <div className="flex-1 flex flex-col items-start justify-start gap-24 pt-16 lg:pt-12 xl:pt-0 h-full">
+        <div className="flex-1 flex flex-col items-start justify-start gap-24 pt-40 lg:pt-12 xl:pt-0 h-full">
           <div className="flex flex-col gap-10">
             <h3 className="font-victory-striker-sans lg:text-5xl text-4xl">
               {' '}
