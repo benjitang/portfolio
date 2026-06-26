@@ -4,6 +4,7 @@ import { ListViewIcon } from '@/components/icons/ListViewIcon';
 import { useState } from 'react';
 import ProjectCard, { type Project } from '@/components/ProjectCard';
 import { AnimatePresence, motion } from 'framer-motion';
+import { randomColors, randomImages } from '@/constants';
 
 const projects: Project[] = [
   {
@@ -203,7 +204,12 @@ const Works = () => {
               exit={{ opacity: 0, y: 24 }}
               transition={{ duration: 0.35, ease: 'easeOut' }}
             >
-              <ProjectCard project={project} />
+              <ProjectCard
+  key={project.id}
+  project={project}
+  color={randomColors[project.id % randomColors.length]}
+  imageName={randomImages[project.id % randomImages.length]}
+/>
             </motion.div>
           ))}
         </AnimatePresence>
@@ -212,7 +218,7 @@ const Works = () => {
       <div className="flex justify-center py-20 pb-28">
         <button
           onClick={() => setShowMore(!showMore)}
-          className="font-medium text-xl lg:text-2xl border border-[#354156] text-[#354156] px-10 py-5 rounded-full hover:bg-[#2E3F59] hover:text-[#F3F9FF] hover:border-[#2E3F59] transition-colors duration-300 ease-in-out cursor-pointer"
+          className="font-medium text-xl lg:text-2xl border bg-[#1C1D20] border-[#354156] text-[#F3F9FF] px-10 py-5 rounded-full hover:bg-transparent hover:text-[#354156] hover:border-[#354156] transition-colors duration-300 ease-in-out cursor-pointer"
         >
           {showMore ? 'Show Less' : 'Load More Work'}
         </button>
