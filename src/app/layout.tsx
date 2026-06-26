@@ -6,6 +6,7 @@ import 'simplebar-react/dist/simplebar.min.css';
 import Navbar from '@/components/layout/Navbar';
 import { ScrollbarProvider } from '@/components/ScrollbarProvider';
 import Footer from '@/components/layout/Footer';
+import { headers } from 'next/headers';
 
 const sourceSerif = Source_Serif_4({
   variable: '--font-source-serif',
@@ -49,18 +50,25 @@ export const metadata: Metadata = {
   description: 'Portfolio for Benjamin Tang',
 };
 
-export default function RootLayout({
+async function getIsDesktop() {
+  const headersList = await headers();
+  const ua = headersList.get('user-agent') ?? '';
+  return !/android|iphone|ipad|ipod|mobile|tablet/i.test(ua);
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isDesktop = await getIsDesktop();
   return (
     <html
       lang="en"
       className={`${sourceSerif.variable} ${neueMontreal.variable} ${victoryStrikerSans.variable} h-full antialiased`}
     >
       <body className="m-0 p-0 flex flex-col">
-        <ScrollbarProvider>
+        <ScrollbarProvider isDesktop={isDesktop}>
           {' '}
           <Navbar fixed={true} />
           <div> {children}
