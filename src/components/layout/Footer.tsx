@@ -27,7 +27,7 @@ const Footer = () => {
         </button>
       </div>
       <div className="pt-28 flex lg:flex-row flex-col-reverse lg:justify-between lg:items-end items-center gap-16 lg:gap-0">
-        <div className="text-2xl flex flex-row gap-10 font-medium text-[#F3F9FF]">
+        <div className="text-2xl flex flex-row gap-0 lg:gap-10 w-[90%] justify-between lg:justify-start lg:w-auto font-medium text-[#F3F9FF]">
           {navLinks.map((nav) => (
             <div key={nav.name + '1'}>{nav.name}</div>
           ))}
