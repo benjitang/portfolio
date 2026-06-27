@@ -43,7 +43,7 @@ const ContactForm = () => {
           <h6 className="text-xl xl:text-2xl font-base transition-colors duration-300 tracking-tight">
             SUBMIT
           </h6>
-          <PointArrowIcon className="w-6 h-8 xl:w-8 xl:h-8" />
+          <PointArrowIcon className="w-6 h-8 xl:w-8 xl:h-8 group-hover:fill-[#F3F9FF] fill-[#F8D752]" />
         </div>
       </div>
     </div>

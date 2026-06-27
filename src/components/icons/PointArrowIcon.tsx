@@ -6,7 +6,7 @@ export const PointArrowIcon = ({
   <svg
     viewBox="0 0 192 192"
     xmlns="http://www.w3.org/2000/svg"
-    className={`fill-[#F8D752] group-hover:fill-[#F3F9FF] transition-colors ${className}`}
+    className={` transition-colors ${className}`}
     preserveAspectRatio="xMidYMid meet"
   >
     <g clipPath="url(#clip0_106_3)">
