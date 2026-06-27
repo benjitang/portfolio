@@ -18,7 +18,7 @@ const Footer = () => {
   return (
     <div className="lg:px-[3.5em] px-4 bg-[#2E3F59]">
       <div className="pt-36 flex flex-col items-center gap-12">
-        <h3 className="font-victory-striker-sans text-6xl lg:text-7xl text-[#F3F9FF] text-center leading-[140%]">
+        <h3 className="font-victory-striker-sans text-6xl lg:text-7xl text-[#F3F9FF] text-center leading-[160%]">
           {' '}
           Want to connect?{' '}
         </h3>

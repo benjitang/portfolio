@@ -170,7 +170,7 @@ const Works = () => {
       </div>
 
       <div className="flex justify-end">
-        <div className="flex flex-row gap-10">
+        <div className="flex flex-row lg:gap-10 gap-8">
           <div
             onClick={() => setGraph(true)}
             className={`transition-colors duration-300 ease-in-out cursor-pointer border p-6 rounded-full border-[#354156] ${graph ? 'bg-[#1C1D20]' : 'bg-[#F3F9FF]'}`}
