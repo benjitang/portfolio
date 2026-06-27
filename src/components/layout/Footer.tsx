@@ -75,7 +75,7 @@ const Footer = () => {
             © 2026 Benjamin Tang All Rights Reserved
           </h2>
         </div>
-        <div className="lg:w-[28%] w-[80%]">
+        <div className="lg:w-[28%] w-[90%]">
           <Socials />
         </div>
       </div>
