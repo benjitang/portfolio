@@ -26,18 +26,18 @@ const Footer = () => {
           Get in Touch
         </button>
       </div>
-      <div className="pt-28 flex flex-row justify-between items-end">
+      <div className="pt-28 flex lg:flex-row flex-col-reverse lg:justify-between lg:items-end items-center gap-16 lg:gap-0">
         <div className="text-2xl flex flex-row gap-10 font-medium text-[#F3F9FF]">
           {navLinks.map((nav) => (
             <div key={nav.name + '1'}>{nav.name}</div>
           ))}
         </div>
         <div className="group hover:text-[#F8D752] transition-colors duration-300 ease-in-out text-[#F3F9FF] flex flex-row gap-4 cursor-pointer">
-          <h2 className="text-2xl">Back To Top</h2>
+          <h2 className="text-2xl underline underline-offset-6">Back To Top</h2>
           <PointArrowIcon className="w-8 h-8 fill-[#F3F9FF] group-hover:fill-[#F8D752] -rotate-90 transition-colors duration-300 ease-in-out" />
         </div>
       </div>
-      <div className="font-victory-striker-sans pt-10">
+      <div className="font-victory-striker-sans pt-2 lg:pt-10">
         <div className="pt-10 lg:pt-1 h-70 -mx-4 lg:-mx-[3.5em]">
           {/* Mobile */}
           <div className="lg:hidden w-full h-60 relative overflow-hidden">
@@ -68,14 +68,14 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="pt-10 pb-12 flex justify-between items-center">
+      <div className="lg:pt-10 pt-12 pb-20 lg:pb-12 flex lg:flex-row flex-col-reverse justify-between items-center gap-12 lg:gap-0">
         <div>
-          <h2 className="text-2xl text-[#F3F9FF] font-base">
+          <h2 className="text-2xl text-[#F3F9FF] font-base text-center">
             {' '}
             © 2026 Benjamin Tang All Rights Reserved
           </h2>
         </div>
-        <div className="w-[28%]">
+        <div className="lg:w-[28%] w-[80%]">
           <Socials />
         </div>
       </div>
