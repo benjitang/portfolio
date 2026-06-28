@@ -53,6 +53,59 @@ export default function TransitionProvider({
   }, []);
 
   useEffect(() => {
+    let startY = 0;
+    let startX = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      startY = e.touches[0].clientY;
+      startX = e.touches[0].clientX;
+    };
+
+    const handleLinkClick = (e: MouseEvent | TouchEvent) => {
+      // Block clicks during transition
+      if (isTransitioningRef.current) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        return;
+      }
+
+      // If touch moved more than 10px, it's a scroll — ignore
+      if (e instanceof TouchEvent) {
+        const touch = e.changedTouches[0];
+        const distY = Math.abs(touch.clientY - startY);
+        const distX = Math.abs(touch.clientX - startX);
+        if (distY > 10 || distX > 10) return;
+      }
+
+      const anchor = (e.target as HTMLElement).closest('a');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href') ?? '';
+      const path = href.split('?')[0].replace(/\/$/, '') || '/';
+      pendingLabelRef.current = ROUTE_LABELS[path] ?? '';
+    };
+
+    document.addEventListener('touchstart', handleTouchStart, {
+      passive: true,
+    });
+    document.addEventListener('click', handleLinkClick, true);
+    document.addEventListener(
+      'touchend',
+      handleLinkClick as EventListener,
+      true,
+    );
+
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('click', handleLinkClick, true);
+      document.removeEventListener(
+        'touchend',
+        handleLinkClick as EventListener,
+        true,
+      );
+    };
+  }, []);
+
+  useEffect(() => {
     createTransitionGrid();
     window.addEventListener('resize', createTransitionGrid);
     return () => window.removeEventListener('resize', createTransitionGrid);
@@ -88,7 +141,10 @@ export default function TransitionProvider({
   const getRowBlocks = (row: number): HTMLDivElement[] =>
     blocksRef.current.slice(row * COLS, row * COLS + COLS);
 
-  const animateIn = (onComplete: () => void, label?: string): gsap.core.Timeline => {
+  const animateIn = (
+    onComplete: () => void,
+    label?: string,
+  ): gsap.core.Timeline => {
     killActiveTimeline();
     isTransitioningRef.current = true;
 
