@@ -70,9 +70,9 @@ export default async function RootLayout({
     >
       <body className="m-0 p-0 flex flex-col">
         <TransitionProvider>
+          <Navbar fixed={true} />
           <ScrollbarProvider isDesktop={isDesktop}>
             {' '}
-            <Navbar fixed={true} />
             <div>
               {' '}
               {children}

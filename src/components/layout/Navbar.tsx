@@ -1,7 +1,6 @@
-/* TODO: Fix the navbar so you cannot scroll when overlay open on the top screen*/ 
-
 'use client';
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { usePathname } from 'next/navigation';
 import HamburgerMenu from '../HamburgerMenu';
 import Logo from '../Logo';
@@ -13,40 +12,72 @@ const Navbar = ({ fixed = false }: { fixed?: boolean }) => {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  const handleOpen = (value: boolean) => {
+    setOpen(value);
+    window.dispatchEvent(new CustomEvent('navOverlayChange', { detail: { open: value } }));
+  };
+
+  // Sync open state across both navbar instances
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      const isOpen = customEvent.detail.open;
+      setOpen(isOpen);
+      if (fixed) {
+        if (isOpen) setScrolled(true);
+      }
+    };
+    window.addEventListener('navOverlayChange', handler);
+    return () => window.removeEventListener('navOverlayChange', handler);
+  }, [fixed]);
+
   // Prevent body scroll when menu is open
   useEffect(() => {
+    const scrollElement = document.querySelector('.simplebar-content-wrapper') as HTMLElement;
+    const scrollbar = document.querySelector('.simplebar-track') as HTMLElement;
+
     if (open) {
       document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
+      if (scrollElement) scrollElement.style.overflow = 'hidden';
+      if (scrollbar) scrollbar.style.display = 'none';
     } else {
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
+      if (scrollElement) scrollElement.style.overflow = '';
+      if (scrollbar) scrollbar.style.display = '';
     }
 
     return () => {
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
+      if (scrollElement) scrollElement.style.overflow = '';
+      if (scrollbar) scrollbar.style.display = '';
     };
   }, [open]);
 
   useEffect(() => {
     if (!fixed) return;
+
+    if (open) {
+      setScrolled(true);
+      return;
+    }
+
     const shouldWatchScroll = pathname === '/' || pathname === '/contact';
     if (!shouldWatchScroll) {
       setScrolled(true);
       return;
     }
     const handleScroll = () => {
-      const scrollElement = document.querySelector(
-        '.simplebar-content-wrapper',
-      );
+      const scrollElement = document.querySelector('.simplebar-content-wrapper');
       if (scrollElement) {
         setScrolled((scrollElement as HTMLElement).scrollTop > 240);
       } else {
         setScrolled(window.scrollY > 240);
       }
     };
-    
+
     handleScroll();
     const scrollElement = document.querySelector('.simplebar-content-wrapper');
     scrollElement?.addEventListener('scroll', handleScroll);
@@ -55,21 +86,21 @@ const Navbar = ({ fixed = false }: { fixed?: boolean }) => {
       scrollElement?.removeEventListener('scroll', handleScroll);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [fixed, pathname]);
+  }, [fixed, pathname, open]);
 
   const navbarClasses = `container-nav z-[60] transition-all duration-300 ${
     fixed
       ? `fixed inset-x-0 top-0 ${!open ? 'mix-blend-difference' : ''}`
       : 'relative'
-  } ${fixed && !scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
+  } ${fixed && !scrolled && !open ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
 
   return (
     <>
       <nav className={navbarClasses}>
-        <Logo open={open} setOpen={setOpen} fixed={fixed} />
+        <Logo open={open} setOpen={handleOpen} fixed={fixed} />
         <HamburgerMenu
           open={open}
-          setOpen={setOpen}
+          setOpen={handleOpen}
           size={56}
           color={fixed && !open ? '#FFFFFF' : '#F8D752'}
           hoverColor={fixed && !open ? 'oklch(83.7% 0.128 66.29)' : '#F3F9FF'}
@@ -79,7 +110,7 @@ const Navbar = ({ fixed = false }: { fixed?: boolean }) => {
         />
         <HamburgerMenu
           open={open}
-          setOpen={setOpen}
+          setOpen={handleOpen}
           size={44}
           barHeight={3}
           color={fixed && !open ? '#FFFFFF' : '#F8D752'}
@@ -90,40 +121,48 @@ const Navbar = ({ fixed = false }: { fixed?: boolean }) => {
         />
       </nav>
 
-      {open && (
-        <div
-          className="fixed inset-0 z-[40] flex flex-col justify-center items-center lg:gap-20 gap-18 pt-26"
-          style={{
-            backgroundColor: '#2E3F59',
-          }}
-        >
-          <div className="flex flex-col lg:gap-9 gap-8">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  aria-current={isActive ? 'page' : undefined}
-                  className={`block font-victory-striker-sans text-center lg:text-7xl text-6xl transition-colors duration-300 ease-in-out text-[#F3F9FF] hover:text-[#F8D752] ${isActive ? "text-[#F8D752]" : "text-[#F3F9FF]"}`}
-                  onClick={(event) => {
-                    if (isActive) {
-                      event.preventDefault();
-                      return;
-                    }
-                    setOpen(false);
-                  }}
-                >
-                  {link.name}
-                </a>
-              );
-            })}
-          </div>
-          <div className="px-8">
-            <Socials />
-          </div>
+      {open
+  ? createPortal(
+      <div
+        className="fixed inset-0 z-[40] flex flex-col justify-center items-center lg:gap-20 gap-18 pt-26"
+        style={{ backgroundColor: '#2E3F59' }}
+      >
+        <div className="flex flex-col lg:gap-9 gap-8">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+
+            return (
+              <a
+                key={link.name}
+                href={link.href}
+                aria-current={isActive ? 'page' : undefined}
+                className={`block font-victory-striker-sans text-center lg:text-7xl text-6xl transition-colors duration-300 ease-in-out text-[#F3F9FF] hover:text-[#F8D752] ${
+                  isActive
+                    ? 'text-[#F8D752]'
+                    : 'text-[#F3F9FF]'
+                }`}
+                onClick={(event) => {
+                  if (isActive) {
+                    event.preventDefault();
+                    return;
+                  }
+
+                  handleOpen(false);
+                }}
+              >
+                {link.name}
+              </a>
+            );
+          })}
         </div>
-      )}
+
+        <div className="px-8">
+          <Socials />
+        </div>
+      </div>,
+      document.body
+    )
+  : null}
     </>
   );
 };
