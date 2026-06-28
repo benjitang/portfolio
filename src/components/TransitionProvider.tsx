@@ -22,6 +22,8 @@ export default function TransitionProvider({
   const transitionLabelRef = useRef<HTMLDivElement>(null);
   const blocksRef = useRef<HTMLDivElement[]>([]);
   const pendingLabelRef = useRef<string>('');
+  const activeTimelineRef = useRef<gsap.core.Timeline | null>(null);
+  const isTransitioningRef = useRef<boolean>(false);
 
   const createTransitionGrid = useCallback(() => {
     if (!transitionGridRef.current) return;
@@ -58,6 +60,13 @@ export default function TransitionProvider({
 
   useEffect(() => {
     const handleLinkClick = (e: MouseEvent) => {
+      // Block clicks during transition
+      if (isTransitioningRef.current) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        return;
+      }
+
       const anchor = (e.target as HTMLElement).closest('a');
       if (!anchor) return;
       const href = anchor.getAttribute('href') ?? '';
@@ -69,11 +78,25 @@ export default function TransitionProvider({
     return () => document.removeEventListener('click', handleLinkClick, true);
   }, []);
 
+  const killActiveTimeline = () => {
+    if (activeTimelineRef.current) {
+      activeTimelineRef.current.kill();
+      activeTimelineRef.current = null;
+    }
+  };
+
   const getRowBlocks = (row: number): HTMLDivElement[] =>
     blocksRef.current.slice(row * COLS, row * COLS + COLS);
 
   const animateIn = (onComplete: () => void, label?: string): gsap.core.Timeline => {
-    const t1 = gsap.timeline({ onComplete });
+    killActiveTimeline();
+    isTransitioningRef.current = true;
+
+    const t1 = gsap.timeline({
+      onComplete: () => {
+        onComplete();
+      },
+    });
 
     if (transitionLabelRef.current) {
       transitionLabelRef.current.textContent = label ?? '';
@@ -101,11 +124,19 @@ export default function TransitionProvider({
       t1.to(transitionLabelRef.current, { opacity: 1, duration: 0.2 }, 0.55);
     }
 
+    activeTimelineRef.current = t1;
     return t1;
   };
 
   const animateOut = (onComplete: () => void): gsap.core.Timeline => {
-    const t1 = gsap.timeline({ onComplete });
+    killActiveTimeline();
+
+    const t1 = gsap.timeline({
+      onComplete: () => {
+        isTransitioningRef.current = false;
+        onComplete();
+      },
+    });
 
     if (transitionLabelRef.current) {
       t1.to(transitionLabelRef.current, { opacity: 0, duration: 0.15 });
@@ -128,6 +159,7 @@ export default function TransitionProvider({
       );
     });
 
+    activeTimelineRef.current = t1;
     return t1;
   };
 
