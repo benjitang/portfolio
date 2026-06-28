@@ -164,6 +164,14 @@
   opacity: 0;
 }
 
+body:has(.nav-overlay-open) .simplebar-content-wrapper {
+  overflow: hidden !important;
+}
+
+body:has(.nav-overlay-open) .simplebar-track {
+  display: none !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -62,6 +62,7 @@ export default function TransitionProvider({
     };
 
     const handleLinkClick = (e: MouseEvent | TouchEvent) => {
+      console.log('link clicked', (e.target as HTMLElement).closest('a')?.href);
       // Block clicks during transition
       if (isTransitioningRef.current) {
         e.preventDefault();
@@ -223,6 +224,7 @@ export default function TransitionProvider({
     <TransitionRouter
       auto
       leave={(next) => {
+        console.log('leave fired', pendingLabelRef.current);
         const t1 = animateIn(next, pendingLabelRef.current);
         return () => t1.kill();
       }}
