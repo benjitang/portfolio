@@ -6,13 +6,22 @@ import gsap from 'gsap';
 const ROWS = 4;
 const COLS = 16;
 
+const ROUTE_LABELS: Record<string, string> = {
+  '/': 'Home',
+  '/works': 'Works',
+  '/about': 'About',
+  '/contact': 'Contact',
+};
+
 export default function TransitionProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const transitionGridRef = useRef<HTMLDivElement>(null);
+  const transitionLabelRef = useRef<HTMLDivElement>(null);
   const blocksRef = useRef<HTMLDivElement[]>([]);
+  const pendingLabelRef = useRef<string>('');
 
   const createTransitionGrid = useCallback(() => {
     if (!transitionGridRef.current) return;
@@ -47,11 +56,30 @@ export default function TransitionProvider({
     return () => window.removeEventListener('resize', createTransitionGrid);
   }, [createTransitionGrid]);
 
+  useEffect(() => {
+    const handleLinkClick = (e: MouseEvent) => {
+      const anchor = (e.target as HTMLElement).closest('a');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href') ?? '';
+      const path = href.split('?')[0].replace(/\/$/, '') || '/';
+      pendingLabelRef.current = ROUTE_LABELS[path] ?? '';
+    };
+
+    document.addEventListener('click', handleLinkClick, true);
+    return () => document.removeEventListener('click', handleLinkClick, true);
+  }, []);
+
   const getRowBlocks = (row: number): HTMLDivElement[] =>
     blocksRef.current.slice(row * COLS, row * COLS + COLS);
 
-  const animateIn = (onComplete: () => void): gsap.core.Timeline => {
+  const animateIn = (onComplete: () => void, label?: string): gsap.core.Timeline => {
     const t1 = gsap.timeline({ onComplete });
+
+    if (transitionLabelRef.current) {
+      transitionLabelRef.current.textContent = label ?? '';
+      gsap.set(transitionLabelRef.current, { opacity: 0 });
+    }
+
     ([0, 1, 2, 3] as const).forEach((row) => {
       const blocks = getRowBlocks(row);
       t1.to(
@@ -68,11 +96,21 @@ export default function TransitionProvider({
         '<',
       );
     });
+
+    if (transitionLabelRef.current) {
+      t1.to(transitionLabelRef.current, { opacity: 1, duration: 0.2 }, 0.55);
+    }
+
     return t1;
   };
 
   const animateOut = (onComplete: () => void): gsap.core.Timeline => {
     const t1 = gsap.timeline({ onComplete });
+
+    if (transitionLabelRef.current) {
+      t1.to(transitionLabelRef.current, { opacity: 0, duration: 0.15 });
+    }
+
     ([0, 1, 2, 3] as const).forEach((row) => {
       const blocks = getRowBlocks(row);
       t1.to(
@@ -89,6 +127,7 @@ export default function TransitionProvider({
         '<',
       );
     });
+
     return t1;
   };
 
@@ -96,7 +135,7 @@ export default function TransitionProvider({
     <TransitionRouter
       auto
       leave={(next) => {
-        const t1 = animateIn(next);
+        const t1 = animateIn(next, pendingLabelRef.current);
         return () => t1.kill();
       }}
       enter={(next) => {
@@ -104,10 +143,8 @@ export default function TransitionProvider({
         return () => t1.kill();
       }}
     >
-      {/* Overlay grid — fixed, pointer-events:none, sits above content */}
       <div ref={transitionGridRef} className="transition-grid" />
-
-      {/* Page content rendered normally below */}
+      <div ref={transitionLabelRef} className="transition-label" />
       {children}
     </TransitionRouter>
   );
