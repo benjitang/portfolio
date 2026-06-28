@@ -7,6 +7,7 @@ import Navbar from '@/components/layout/Navbar';
 import { ScrollbarProvider } from '@/components/ScrollbarProvider';
 import Footer from '@/components/layout/Footer';
 import { headers } from 'next/headers';
+import TransitionProvider from '@/components/TransitionProvider';
 
 const sourceSerif = Source_Serif_4({
   variable: '--font-source-serif',
@@ -68,13 +69,17 @@ export default async function RootLayout({
       className={`${sourceSerif.variable} ${neueMontreal.variable} ${victoryStrikerSans.variable} h-full antialiased`}
     >
       <body className="m-0 p-0 flex flex-col">
-        <ScrollbarProvider isDesktop={isDesktop}>
-          {' '}
-          <Navbar fixed={true} />
-          <div> {children}
-            <Footer />
-          </div>
-        </ScrollbarProvider>
+        <TransitionProvider>
+          <ScrollbarProvider isDesktop={isDesktop}>
+            {' '}
+            <Navbar fixed={true} />
+            <div>
+              {' '}
+              {children}
+              <Footer />
+            </div>
+          </ScrollbarProvider>
+        </TransitionProvider>
       </body>
     </html>
   );

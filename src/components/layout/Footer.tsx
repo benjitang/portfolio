@@ -33,7 +33,7 @@ const Footer = () => {
           ))}
         </div>
         <div className="group hover:text-[#F8D752] transition-colors duration-300 ease-in-out text-[#F3F9FF] flex flex-row gap-4 cursor-pointer">
-          <h2 className="text-2xl underline underline-offset-6">Back To Top</h2>
+          <h2 className="text-2xl underline-offset-6">Back To Top</h2>
           <PointArrowIcon className="w-8 h-8 fill-[#F3F9FF] group-hover:fill-[#F8D752] -rotate-90 transition-colors duration-300 ease-in-out" />
         </div>
       </div>
