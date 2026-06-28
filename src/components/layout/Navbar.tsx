@@ -100,30 +100,12 @@ const Navbar = ({ fixed = false }: { fixed?: boolean }) => {
           <div className="flex flex-col lg:gap-9 gap-8">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
-              // Different colors for fixed vs non-fixed navbar overlay
-              const linkColor = fixed ? '#FFFFFF' : '#F3F9FF';
-              const hoverColor = fixed ? '#F3971E' : '#F8D752';
-              const activeColor = '#F8D752';
-
               return (
                 <a
                   key={link.name}
                   href={link.href}
                   aria-current={isActive ? 'page' : undefined}
-                  className="block font-victory-striker-sans text-center lg:text-7xl text-6xl transition-colors duration-300 ease-in-out"
-                  style={{
-                    color: isActive ? activeColor : linkColor,
-                  }}
-                  onMouseEnter={(e) => {
-                    if (!isActive) {
-                      (e.currentTarget as HTMLElement).style.color = hoverColor;
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isActive) {
-                      (e.currentTarget as HTMLElement).style.color = linkColor;
-                    }
-                  }}
+                  className={`block font-victory-striker-sans text-center lg:text-7xl text-6xl transition-colors duration-300 ease-in-out text-[#F3F9FF] hover:text-[#F8D752] ${isActive ? "text-[#F8D752]" : "text-[#F3F9FF]"}`}
                   onClick={(event) => {
                     if (isActive) {
                       event.preventDefault();
