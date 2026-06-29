@@ -32,7 +32,7 @@ const Navbar = ({ fixed = false }: { fixed?: boolean }) => {
         });
         gsap.to(overlayRef.current, {
           clipPath: 'circle(0% at 50% 0%)',
-          duration: 1.2,
+          duration: 0.6,
           ease: 'power3.inOut',
           onComplete: () => {
             setOpen(false);
