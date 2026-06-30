@@ -131,3 +131,12 @@ export const education = [
     endYear: 2026,
   },
 ];
+
+export const skills = [
+  { title: 'Languages + Frameworks', tools: [] },
+  { title: 'AI + Machine Learning', tools: [] },
+  { title: 'Databases + State', tools: [] },
+  { title: 'Devops + Cloud', tools: [] },
+  { title: '3D + Graphics', tools: [] },
+  { title: 'UI + Styling', tools: [] },
+];

@@ -1,4 +1,5 @@
-import { aboutMe, education, jobs, services } from '@/constants';
+import SkillCard from '@/components/SkillCard';
+import { aboutMe, education, jobs, services, skills } from '@/constants';
 import Image from 'next/image';
 
 const About = () => {
@@ -168,6 +169,20 @@ const About = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="pt-48 pb-32">
+        <div className="flex flex-col gap-20">
+          <h2 className="font-victory-striker-sans text-[#274D6F] text-7xl text-center">
+            {' '}
+            Technology and Tools{' '}
+          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-3 divide-x divide-y divide-[#2E3F59]/40 border border-[#2E3F59]/40">
+  {skills.map((skill, index) => (
+    <SkillCard key={index} title={skill.title} tools={skill.tools} />
+  ))}
+</div>
+        </div>
       </div>
     </div>
   );
