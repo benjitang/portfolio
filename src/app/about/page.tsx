@@ -72,36 +72,36 @@ const About = () => {
           ))}
         </div>
       </div>
-      <div className="pt-72 flex flex-row gap-10">
-        <div className="flex-1 py-8 flex flex-col justify-between">
-          <div className="flex flex-col text-7xl font-victory-striker-sans gap-10">
+      <div className="pt-72 flex lg:flex-row flex-col xl:gap-0 lg:gap-28 gap-8">
+        <div className="flex-1 py-8 flex flex-col justify-between gap-16">
+          <div className="flex flex-col lg:text-7xl text-6xl font-victory-striker-sans lg:gap-10 gap-6">
             <h3 className="text-[#274D6F]">Working</h3>{' '}
             <h3 className="text-[#2E3F59]">Experience</h3>
           </div>
-          <div className="text-2xl text-[#5C5E62] bg-white px-10 py-5 rounded-full border-[#D1D5DB] border-1 w-fit flex flex-row gap-6 justify-center items-center">
+          <div className="lg:text-2xl text-xl text-[#5C5E62] bg-white lg:px-10 px-8 lg:py-5 py-4 rounded-full border-[#D1D5DB] border-1 w-fit flex flex-row gap-6 justify-center items-center">
             <Image
               src="/greenDot.png"
               alt="Green Dot"
               width={20}
               height={20}
-              className="w-5 h-5"
+              className="lg:w-5 w-4 h-auto"
             />{' '}
-            <h5>Available for Work </h5>
+            <h5 className="text-nowrap">Available for Work </h5>
           </div>
         </div>
-        <div className="flex-2 flex flex-col gap-14">
+        <div className="flex-2 flex flex-col lg:gap-14 gap-8">
           {jobs.map((job, index) => (
-            <div key={index} className="flex flex-row gap-16">
+            <div key={index} className="flex lg:flex-row flex-col lg:gap-16 gap-8">
               <div className="flex items-start justify-start">
-                <h4 className="text-2xl text-[#2E3F59]/80 w-16">
+                <h4 className="lg:text-2xl text-xl text-[#2E3F59]/80 w-16">
                   {String(index + 1).padStart(2, '0')}
                 </h4>
               </div>
-              <div className="flex flex-row w-full justify-between items-start pb-6 border-b border-[#2E3F59]/40">
-                <h4 className="text-3xl text-[#354156]"> {job.title}</h4>
+              <div className="flex flex-row w-full justify-between lg:items-start items-center lg:pb-6 pb-4 border-b border-[#2E3F59]/40">
+                <h4 className="lg:text-3xl text-2xl text-[#354156]"> {job.title}</h4>
                 <div className="flex flex-col text-end">
-                  <h5 className="text-lg text-[#2E3F59]/80"> {job.company}</h5>{' '}
-                  <h5 className="text-lg text-[#2E3F59]/80">
+                  <h5 className="lg:text-lg text-base text-[#2E3F59]/80"> {job.company}</h5>{' '}
+                  <h5 className="lg:text-lg text-base text-[#2E3F59]/80">
                     {' '}
                     {job.startYear}-{job.endYear}
                   </h5>
