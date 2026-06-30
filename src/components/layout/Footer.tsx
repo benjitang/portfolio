@@ -26,16 +26,14 @@ const Footer = () => {
           Get in Touch
         </button>
       </div>
-      <div className="pt-28 flex lg:flex-row flex-col-reverse lg:justify-between lg:items-end items-center gap-16 lg:gap-0">
-        <div className="lg:text-2xl text-xl flex flex-row gap-0 lg:gap-10 w-[90%] justify-between lg:justify-start lg:w-auto font-medium text-[#F3F9FF]">
+      <div className="pt-28 flex flex-row justify-between lg:items-end items-center lg:gap-0 text-[#F3F9FF] lg:text-4xl text-2xl font-medium lg:w-[80%] w-[90%] mx-auto">
           {navLinks.map((nav) => (
             <div key={nav.name + '1'}>{nav.name}</div>
           ))}
-        </div>
-        <div className="group hover:text-[#F8D752] transition-colors duration-300 ease-in-out text-[#F3F9FF] flex flex-row gap-4 cursor-pointer">
+        {/* <div className="group hover:text-[#F8D752] transition-colors duration-300 ease-in-out text-[#F3F9FF] flex flex-row gap-4 cursor-pointer">
           <h2 className="text-2xl underline-offset-6">Back To Top</h2>
           <PointArrowIcon className="w-8 h-8 fill-[#F3F9FF] group-hover:fill-[#F8D752] -rotate-90 transition-colors duration-300 ease-in-out" />
-        </div>
+        </div> */}
       </div>
       <div className="font-victory-striker-sans pt-2 lg:pt-10">
         <div className="pt-10 lg:pt-1 h-70 -mx-4 lg:-mx-[3.5em]">
@@ -68,7 +66,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="lg:pt-10 pt-12 pb-20 lg:pb-12 flex lg:flex-row flex-col-reverse justify-between items-center gap-12 lg:gap-0">
+      <div className="lg:pt-10 pt-12 pb-20 lg:pb-12 flex lg:flex-row flex-col-reverse justify-between items-center lg:items-end gap-12 lg:gap-0">
         <div>
           <h2 className="lg:text-2xl text-xl text-[#F3F9FF] font-base text-center">
             {' '}
