@@ -116,11 +116,11 @@ export const services = [
 ];
 
 export const jobs = [
-  { title: 'N/A', company: 'N/A', startYear: 2023, endYear: 2024 },
-  { title: 'N/A', company: 'N/A', startYear: 2023, endYear: 2024 },
-  { title: 'N/A', company: 'N/A', startYear: 2023, endYear: 2024 },
-  { title: 'N/A', company: 'N/A', startYear: 2023, endYear: 2024 },
-  { title: 'N/A', company: 'N/A', startYear: 2023, endYear: 2024 },
+  { title: 'Software Engineer Intern', company: 'Opportunity Knocks', startYear: "2025", endYear: "2026" },
+  { title: 'Software Engineer Intern', company: 'SCIP Global Leaders', startYear: "2024", endYear: "2024" },
+  { title: 'Unavailable', company: 'Unavailable', startYear: "20XX", endYear: "20XX" },
+  { title: 'Unavailable', company: 'Unavailable', startYear: "20XX", endYear: "20XX" },
+  { title: 'Unavailable', company: 'Unavailable', startYear: "20XX", endYear: "20XX" },
 ];
 
 export const education = [

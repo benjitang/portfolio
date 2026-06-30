@@ -41,7 +41,7 @@ export default function SkillCard({ title, tools }: SkillCardProps) {
         )}
 
 
-      <h4 className="text-4xl lg:text-3xl text-[#2E3F59] font-victory-striker-sans">
+      <h4 className="text-4xl lg:text-3xl text-[#2E3F59] font-victory-striker-sans leading-[150%]">
         {title}
       </h4>
       </div>

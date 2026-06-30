@@ -73,7 +73,7 @@ export default async function RootLayout({
           <Navbar fixed={true} />
           <ScrollbarProvider isDesktop={isDesktop}>
             {' '}
-            <div>
+            <div className="overflow-x-hidden">
               {' '}
               {children}
               <Footer />
