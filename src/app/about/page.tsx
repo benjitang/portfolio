@@ -5,9 +5,10 @@ import Image from 'next/image';
 const About = () => {
   return (
     <div className="bg-[#F3F9FF] min-h-screen px-[8%] mx-auto overflow-x-hidden">
-      <div className="flex flex-col justify-center py-40 pb-32 xl:pb-40">
-        <div className="font-victory-striker-sans text-7xl lg:pt-24 pt-8 flex flex-col gap-8 leading-[130%] h-full items-end">
-          <h3 className="text-[#274D6F] text-end w-[70%]">djsafl</h3>
+      <div className="flex flex-col justify-center py-40 pt-56 pb-48 xl:pb-56">
+        <div className="font-victory-striker-sans lg:text-7xl text-5xl lg:pt-24 pt-8 flex flex-col lg:gap-6 gap-4 leading-[130%] h-full items-center">
+          <h3 className="text-[#274D6F] text-center">Learning deeply.</h3>
+          <h3 className="text-[#274D6F] text-center">Building intentionally.</h3>
         </div>
       </div>
       <div className="flex xl:flex-row flex-col-reverse lg:gap-16 gap-4">
