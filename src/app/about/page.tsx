@@ -72,10 +72,15 @@ const About = () => {
         </div>
       </div>
       <div className="pt-72 flex flex-row gap-10">
-        <div className="flex-1 flex flex-col text-7xl font-victory-striker-sans gap-10 py-8">
-          <div></div>
-          <h3 className="text-[#274D6F]">Working</h3>{' '}
-          <h3 className="text-[#2E3F59]">Experience</h3>
+        <div className="flex-1 py-8 flex flex-col justify-between">
+          <div className="flex flex-col text-7xl font-victory-striker-sans gap-10">
+            <h3 className="text-[#274D6F]">Working</h3>{' '}
+            <h3 className="text-[#2E3F59]">Experience</h3>
+          </div>
+          <div className="text-2xl text-[#5C5E62] bg-white px-10 py-5 rounded-full border-[#D1D5DB] border-1 w-fit flex flex-row gap-6 justify-center items-center">
+            <Image src="/greenDot.png" alt="Green Dot" width={20} height={20} className="w-5 h-5"/>{' '}
+            <h5>Available for Work </h5>
+          </div>
         </div>
         <div className="flex-2 flex flex-col gap-14">
           {jobs.map((job, index) => (
