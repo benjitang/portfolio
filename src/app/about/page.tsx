@@ -172,8 +172,8 @@ const About = () => {
       </div>
 
       <div className="pt-48 pb-32">
-        <div className="flex flex-col gap-20">
-          <h2 className="font-victory-striker-sans text-[#274D6F] text-7xl text-center">
+        <div className="flex flex-col lg:gap-20 gap-18">
+          <h2 className="font-victory-striker-sans text-[#274D6F] text-6xl lg:text-7xl text-center leading-[130%]">
             {' '}
             Technology and Tools{' '}
           </h2>
