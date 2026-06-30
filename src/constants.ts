@@ -122,3 +122,12 @@ export const jobs = [
   { title: 'N/A', company: 'N/A', startYear: 2023, endYear: 2024 },
   { title: 'N/A', company: 'N/A', startYear: 2023, endYear: 2024 },
 ];
+
+export const education = [
+  {
+    certificate: 'Data Analyst Certificate',
+    company: 'IBM',
+    startYear: 2026,
+    endYear: 2026,
+  },
+];

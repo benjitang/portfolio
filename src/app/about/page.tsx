@@ -1,4 +1,4 @@
-import { aboutMe, jobs, services } from '@/constants';
+import { aboutMe, education, jobs, services } from '@/constants';
 import Image from 'next/image';
 
 const About = () => {
@@ -78,7 +78,13 @@ const About = () => {
             <h3 className="text-[#2E3F59]">Experience</h3>
           </div>
           <div className="text-2xl text-[#5C5E62] bg-white px-10 py-5 rounded-full border-[#D1D5DB] border-1 w-fit flex flex-row gap-6 justify-center items-center">
-            <Image src="/greenDot.png" alt="Green Dot" width={20} height={20} className="w-5 h-5"/>{' '}
+            <Image
+              src="/greenDot.png"
+              alt="Green Dot"
+              width={20}
+              height={20}
+              className="w-5 h-5"
+            />{' '}
             <h5>Available for Work </h5>
           </div>
         </div>
@@ -103,6 +109,65 @@ const About = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="pt-72">
+        <h4 className="text-end font-victory-striker-sans text-7xl text-[#274D6F]">
+          Education{' '}
+        </h4>
+        <div className="pt-20">
+          <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-col gap-4">
+              <h3 className="text-4xl text-[#2E3F59] font-medium">
+                {' '}
+                Stony Brook University{' '}
+              </h3>
+              <h5 className="text-2xl text-[#2E3F59]/90">
+                {' '}
+                Bachelor of Science in Computer Science{' '}
+              </h5>
+            </div>
+            <div>
+              <h4 className="text-5xl text-[#274D6F] tracking-tight">
+                {' '}
+                2022 - 2026{' '}
+              </h4>
+            </div>
+          </div>
+          <div className="pt-6 pb-10">
+            <div className="relative w-full" style={{ aspectRatio: '1 / 0.5' }}>
+              <Image
+                src="/stonybrook.jpg"
+                alt="Stony Brook"
+                fill
+                sizes="100vw"
+                className="object-cover object-center"
+              />
+            </div>
+          </div>
+        </div>
+        {education.map((edu, index) => (
+          <div
+            className="flex flex-row justify-between items-center border-t border-[#2E3F59]/40 pt-8 pb-10"
+            key={index}
+          >
+            <div className="flex flex-col gap-4">
+              <h3 className="text-4xl text-[#2E3F59] font-medium">
+                {' '}
+                {edu.company}
+              </h3>
+              <h5 className="text-2xl text-[#2E3F59]/90"> {edu.certificate}</h5>
+            </div>
+            <div>
+              <h4 className="text-5xl text-[#274D6F] tracking-tight">
+                {' '}
+                {edu.startYear === edu.endYear
+                  ? edu.endYear
+                  : `${edu.startYear} - ${edu.endYear}`}{' '}
+              </h4>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
