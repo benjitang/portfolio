@@ -113,30 +113,30 @@ const About = () => {
       </div>
 
       <div className="pt-72">
-        <h4 className="text-end font-victory-striker-sans text-7xl text-[#274D6F]">
+        <h4 className="text-end font-victory-striker-sans lg:text-7xl text-6xl text-[#274D6F]">
           Education{' '}
         </h4>
         <div className="pt-20">
-          <div className="flex flex-row justify-between items-center">
-            <div className="flex flex-col gap-4">
-              <h3 className="text-4xl text-[#2E3F59] font-medium">
+          <div className="flex lg:flex-row flex-col-reverse lg:justify-between lg:items-center items-start gap-2 lg:gap-2">
+            <div className="flex flex-col lg:gap-4 gap-2">
+              <h3 className="lg:text-4xl text-2xl text-[#2E3F59] font-medium">
                 {' '}
                 Stony Brook University{' '}
               </h3>
-              <h5 className="text-2xl text-[#2E3F59]/90">
+              <h5 className="lg:text-2xl text-xl text-[#2E3F59]/90">
                 {' '}
                 Bachelor of Science in Computer Science{' '}
               </h5>
             </div>
-            <div>
-              <h4 className="text-5xl text-[#274D6F] tracking-tight">
+            <div className="flex justify-end items-end text-end w-full lg:w-fit">
+              <h4 className="lg:text-5xl text-2xl text-[#274D6F] tracking-tight">
                 {' '}
                 2022 - 2026{' '}
               </h4>
             </div>
           </div>
-          <div className="pt-6 pb-10">
-            <div className="relative w-full" style={{ aspectRatio: '1 / 0.5' }}>
+          <div className="lg:pt-6 pt-4 lg:pb-10 pb-6">
+            <div className="relative w-full lg:aspect-[1/0.5] aspect-[8/10]" >
               <Image
                 src="/stonybrook.jpg"
                 alt="Stony Brook"
@@ -149,18 +149,18 @@ const About = () => {
         </div>
         {education.map((edu, index) => (
           <div
-            className="flex flex-row justify-between items-center border-t border-[#2E3F59]/40 pt-8 pb-10"
+            className="flex lg:flex-row flex-col-reverse lg:justify-between lg:items-center items-start gap-2 lg:gap-2 border-t border-[#2E3F59]/40 lg:pt-8 pt-4 lg:pb-10 pb-6"
             key={index}
           >
-            <div className="flex flex-col gap-4">
-              <h3 className="text-4xl text-[#2E3F59] font-medium">
+            <div className="flex flex-col lg:gap-4 gap-2">
+              <h3 className="lg:text-4xl text-2xl text-[#2E3F59] font-medium">
                 {' '}
                 {edu.company}
               </h3>
-              <h5 className="text-2xl text-[#2E3F59]/90"> {edu.certificate}</h5>
+              <h5 className="lg:text-2xl text-xl text-[#2E3F59]/90"> {edu.certificate}</h5>
             </div>
-            <div>
-              <h4 className="text-5xl text-[#274D6F] tracking-tight">
+            <div className="flex justify-end items-end text-end w-full lg:w-fit">
+              <h4 className="lg:text-5xl text-2xl text-[#274D6F] tracking-tight">
                 {' '}
                 {edu.startYear === edu.endYear
                   ? edu.endYear
