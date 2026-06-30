@@ -1,10 +1,10 @@
-import defaultComputer01 from '../public/defaultComputer01.jpg'
+import defaultComputer01 from '../public/defaultComputer01.jpg';
 import defaultComputer02 from '../public/defaultComputer02.jpg';
-import defaultComputer03 from '../public/defaultComputer03.jpg'
-import defaultComputer04 from '../public/defaultComputer04.jpg'
-import defaultComputer05 from '../public/defaultComputer05.jpg'
-import defaultComputer06 from '../public/defaultComputer06.jpg'
-import defaultComputer07 from '../public/defaultComputer07.jpg'
+import defaultComputer03 from '../public/defaultComputer03.jpg';
+import defaultComputer04 from '../public/defaultComputer04.jpg';
+import defaultComputer05 from '../public/defaultComputer05.jpg';
+import defaultComputer06 from '../public/defaultComputer06.jpg';
+import defaultComputer07 from '../public/defaultComputer07.jpg';
 import type { StaticImageData } from 'next/image';
 // add more here as needed
 
@@ -90,5 +90,35 @@ export const randomImages = [
   'defaultComputer05',
   'defaultComputer06',
   'defaultComputer07',
-  
+];
+
+export const aboutMe = [
+  'I am a full stack developer currently trying to find work. I am a recent grad of Stony Brook University with a Computer Science Degree. I am looking for any work to improve and grow myself.',
+  'I am a full stack developer currently trying to find work. I am a recent grad of Stony Brook University with a Computer Science Degree. I am looking for any work to improve and grow myself.',
+];
+
+export const services = [
+  {
+    title: 'Full-Stack Architecture',
+    description:
+      'I am a full stack developer currently trying to find work. I am a recent grad of Stony Brook University with a Computer Science Degree. I am looking for any work to improve and grow myself.',
+  },
+  {
+    title: 'AI & Advanced Integration',
+    description:
+      'I am a full stack developer currently trying to find work. I am a recent grad of Stony Brook University with a Computer Science Degree. I am looking for any work to improve and grow myself.',
+  },
+  {
+    title: '3D & Interactive Experience',
+    description:
+      'I am a full stack developer currently trying to find work. I am a recent grad of Stony Brook University with a Computer Science Degree. I am looking for any work to improve and grow myself.',
+  },
+];
+
+export const jobs = [
+  { title: 'N/A', company: 'N/A', startYear: 2023, endYear: 2024 },
+  { title: 'N/A', company: 'N/A', startYear: 2023, endYear: 2024 },
+  { title: 'N/A', company: 'N/A', startYear: 2023, endYear: 2024 },
+  { title: 'N/A', company: 'N/A', startYear: 2023, endYear: 2024 },
+  { title: 'N/A', company: 'N/A', startYear: 2023, endYear: 2024 },
 ];
