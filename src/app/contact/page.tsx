@@ -31,14 +31,15 @@ const Contact = () => {
             </h3>
             <div className="text-xl lg:text-2xl flex flex-col gap-5">
               <TextWipeLink
-                href="/contact"
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${contactDetails.email}`}
                 text={contactDetails.email}
                 baseColor="#FFFFFF"
                 hoverColor="#F8D752"
                 textClassName="text-base text-xl lg:text-2xl"
-                iconClassName="w-6 lg:w-7 "
+                iconClassName="w-6 lg:w-7"
                 gapClassName="gap-2 lg:gap-3"
                 uppercase={false}
+                newTab
               />
               <h5> {contactDetails.phone} </h5>
             </div>

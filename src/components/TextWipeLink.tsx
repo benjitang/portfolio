@@ -13,6 +13,7 @@ interface TextWipeLinkProps {
   gapClassName?: string;
   className?: string;
   uppercase?: boolean;
+  newTab?: boolean;
 }
 
 const TextWipeLink = ({
@@ -25,6 +26,7 @@ const TextWipeLink = ({
   gapClassName = 'gap-4',
   className = '',
   uppercase = true,
+  newTab = false,
 }: TextWipeLinkProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -43,7 +45,11 @@ const TextWipeLink = ({
   };
 
   return (
-    <Link href={href}>
+    <Link
+      href={href}
+      target={newTab ? '_blank' : undefined}
+      rel={newTab ? 'noopener noreferrer' : undefined}
+    >
       <div
         ref={wrapperRef}
         onMouseEnter={updatePointer}
@@ -56,7 +62,10 @@ const TextWipeLink = ({
           style={{ color: baseColor }}
         >
           {text}
-          <LinkArrowIcon className={iconClassName} style={{ color: baseColor }} />
+          <LinkArrowIcon
+            className={iconClassName}
+            style={{ color: baseColor }}
+          />
         </span>
         {/* Overlay layer, revealed via clip-path from cursor */}
         <span
@@ -64,7 +73,10 @@ const TextWipeLink = ({
           style={{ color: hoverColor }}
         >
           {text}
-          <LinkArrowIcon className={iconClassName} style={{ color: hoverColor }} />
+          <LinkArrowIcon
+            className={iconClassName}
+            style={{ color: hoverColor }}
+          />
         </span>
         <style jsx>{`
           .text-wipe {
