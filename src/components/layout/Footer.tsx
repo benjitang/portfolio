@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import Socials from '../Socials';
 import LogoLoop from '../LogoLoop';
 import { PointArrowIcon } from '../icons/PointArrowIcon';
+import FooterNavLink from '../FooterNavLink';
 
 const Footer = () => {
   const pathname = usePathname();
@@ -27,9 +28,14 @@ const Footer = () => {
         </button>
       </div>
       <div className="pt-28 flex flex-row justify-between lg:items-end items-center lg:gap-0 text-[#F3F9FF] lg:text-4xl text-2xl font-medium lg:w-[80%] w-[90%] mx-auto">
-          {navLinks.map((nav) => (
-            <div key={nav.name + '1'}>{nav.name}</div>
-          ))}
+        {navLinks.map((nav) => (
+          <FooterNavLink
+            key={nav.name + '1'}
+            href={nav.href}
+            text={nav.name}
+            active={pathname === nav.href}
+          />
+        ))}
         {/* <div className="group hover:text-[#F8D752] transition-colors duration-300 ease-in-out text-[#F3F9FF] flex flex-row gap-4 cursor-pointer">
           <h2 className="text-2xl underline-offset-6">Back To Top</h2>
           <PointArrowIcon className="w-8 h-8 fill-[#F3F9FF] group-hover:fill-[#F8D752] -rotate-90 transition-colors duration-300 ease-in-out" />
