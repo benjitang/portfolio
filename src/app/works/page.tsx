@@ -175,43 +175,59 @@ const Works = () => {
             onClick={() => setGraph(true)}
             className={`transition-colors duration-300 ease-in-out cursor-pointer border p-6 rounded-full border-[#354156] ${graph ? 'bg-[#1C1D20]' : 'bg-[#F3F9FF]'}`}
           >
-            <GraphViewIcon
-              className={`w-8 ${graph ? '!fill-[#F3F9FF]' : '!fill-[#354156]'}`}
-            />
+            <GraphViewIcon className={`w-8 ${graph ? '!fill-[#F3F9FF]' : '!fill-[#354156]'}`} />
           </div>
           <div
             onClick={() => setGraph(false)}
             className={`transition-colors duration-300 ease-in-out cursor-pointer border p-6 rounded-full border-[#354156] ${!graph ? 'bg-[#1C1D20]' : 'bg-[#F3F9FF]'}`}
           >
-            <ListViewIcon
-              className={`w-8 ${!graph ? 'fill-[#F3F9FF]' : 'fill-[#354156]'}`}
-            />
+            <ListViewIcon className={`w-8 ${!graph ? 'fill-[#F3F9FF]' : 'fill-[#354156]'}`} />
           </div>
         </div>
       </div>
 
       <motion.div
         layout
-        className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-14 bg-[#F3F9FF]"
+        className={`grid gap-12 mt-14 bg-[#F3F9FF] ${
+          graph ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1'
+        }`}
       >
         <AnimatePresence mode="sync">
-          {visibleProjects.map((project) => (
-            <motion.div
-              key={project.id}
-              layout
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 24 }}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
-            >
-              <ProjectCard
+          {visibleProjects.map((project) =>
+            graph ? (
+              <motion.div
                 key={project.id}
-                project={project}
-                color={randomColors[project.id % randomColors.length]}
-                imageName={randomImages[project.id % randomImages.length]}
-              />
-            </motion.div>
-          ))}
+                layout
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 24 }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
+              >
+                <ProjectCard
+                  project={project}
+                  color={randomColors[project.id % randomColors.length]}
+                  imageName={randomImages[project.id % randomImages.length]}
+                />
+              </motion.div>
+            ) : (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 12 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+                className="border-b border-[#2E3F59]/40 pb-8 pt-8 flex justify-between items-center"
+              >
+                <h5 className="lg:text-2xl text-xl text-[#354156]">
+                  {project.title}
+                </h5>
+                <span className="lg:text-2xl text-xl  text-[#354156]">
+                  {project.year}
+                </span>
+              </motion.div>
+            )
+          )}
         </AnimatePresence>
       </motion.div>
 
