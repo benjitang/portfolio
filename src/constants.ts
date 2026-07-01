@@ -8,6 +8,9 @@ import defaultComputer07 from '../public/defaultComputer07.jpg';
 import type { StaticImageData } from 'next/image';
 // add more here as needed
 
+
+export const github_user = "benjitang"
+
 export const socials = [
   {
     name: 'Github',
