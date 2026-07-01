@@ -3,6 +3,7 @@ import ContactForm from '@/components/ContactForm';
 import { LinkArrowIcon } from '@/components/icons/LinkArrowIcon';
 import Navbar from '@/components/layout/Navbar';
 import Socials from '@/components/Socials';
+import TextWipeLink from '@/components/TextWipeLink';
 import { contactDetails } from '@/constants';
 import SimpleBar from 'simplebar-react';
 
@@ -29,10 +30,16 @@ const Contact = () => {
               Contact Details
             </h3>
             <div className="text-xl lg:text-2xl flex flex-col gap-5">
-              <div className="flex flex-row gap-2 lg:gap-3 cursor-pointer group hover:text-[#F8D752] transition-colors duration-300 ease-in-out">
-                <h5> {contactDetails.email} </h5>{' '}
-                <LinkArrowIcon className="w-6 lg:w-7 fill-white group-hover:fill-[#F8D752]" />
-              </div>
+              <TextWipeLink
+                href="/contact"
+                text={contactDetails.email}
+                baseColor="#FFFFFF"
+                hoverColor="#F8D752"
+                textClassName="text-base text-xl lg:text-2xl"
+                iconClassName="w-6 lg:w-7 "
+                gapClassName="gap-2 lg:gap-3"
+                uppercase={false}
+              />
               <h5> {contactDetails.phone} </h5>
             </div>
           </div>

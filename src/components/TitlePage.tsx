@@ -7,6 +7,7 @@ import TextType from '@/components/TextType';
 import Navbar from '@/components/layout/Navbar';
 import Socials from '@/components/Socials';
 import { LinkArrowIcon } from '@/components/icons/LinkArrowIcon';
+import TextWipeLink from '@/components/TextWipeLink';
 
 const marqueeLogos = [
   { src: '/bigName.svg', alt: 'Benjamin Tang' },
@@ -53,12 +54,25 @@ export default function TitlePage() {
 
       <div className="flex flex-1 flex-col lg:justify-center justify-end md:pb-53 pb-51 items-center lg:h-full lg:pb-20 lg:pt-8">
         <div className="px-10 w-full flex-row lg:justify-between justify-center items-center flex z-10">
-          <Link href="/contact">
-            <div className="group text-2xl font-medium text-[#F8D752] uppercase hidden lg:flex flex-row items-center justify-center gap-4 hover:text-[#F3F9FF] transition-colors duration-300 ease-in-out cursor-pointer">
-              Get in Touch
-              <LinkArrowIcon className="w-7 fill-[#F8D752] group-hover:fill-[#F3F9FF]" />
-            </div>
-          </Link>
+          <TextWipeLink
+            href="/contact"
+            text="Get in Touch"
+            baseColor="#F8D752"
+            hoverColor="#F3F9FF"
+            textClassName="text-2xl"
+            iconClassName="w-7"
+            gapClassName="gap-4"
+            className="hidden lg:flex"
+          />
+          {/* <TextWipeLink
+            href="/contact"
+            text="Get in Touch"
+            baseColor="#F8D752"
+            hoverColor="#F3F9FF"
+            textClassName="text-2xl"
+            iconClassName="w-7"
+            gapClassName="gap-3"
+          /> */}
           <div className="lg:h-60 h-45">
             <TextType
               text={[
@@ -88,14 +102,17 @@ export default function TitlePage() {
         </div>
         <div className="lg:hidden flex justify-center">
           <h3 className="uppercase text-[#F3F9FF] text-2xl font-medium flex-1 lg:flex justify-start">
-            NYC
+            NYC | US
           </h3>
-          <Link href="/contact">
-            <div className="cursor-pointer group hover:text-white text-2xl font-medium text-[#F8D752] uppercase flex flex-row items-center justify-center gap-3">
-              Get in Touch
-              <LinkArrowIcon className="w-7" />
-            </div>
-          </Link>
+          <TextWipeLink
+            href="/contact"
+            text="Get in Touch"
+            baseColor="#F8D752"
+            hoverColor="#F3F9FF"
+            textClassName="text-2xl"
+            iconClassName="w-7"
+            gapClassName="gap-3"
+          />
         </div>
         <h3 className="uppercase text-[#F3F9FF] text-2xl font-medium flex-1 lg:flex justify-end hidden">
           (Scroll)

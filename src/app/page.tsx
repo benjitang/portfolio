@@ -1,6 +1,7 @@
 'use client';
 import { LinkArrowIcon } from '@/components/icons/LinkArrowIcon';
 import ProjectCard, { type Project } from '@/components/ProjectCard';
+import TextWipeLink from '@/components/TextWipeLink';
 import TitlePage from '@/components/TitlePage';
 import { randomColors, randomImages } from '@/constants';
 import Link from 'next/link';
@@ -176,12 +177,15 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <Link href="/about">
-              <div className="group text-3xl font-medium text-[#2E3F59]/90 uppercase flex flex-row items-center justify-center gap-6 hover:text-[#1C1D20] transition-colors duration-300 ease-in-out cursor-pointer text-nowrap">
-                More About
-                <LinkArrowIcon className="w-8 fill-[#2E3F59]/90 group-hover:fill-[#1C1D20]" />
-              </div>
-            </Link>
+              <TextWipeLink
+                href="/about"
+                text="More About"
+                baseColor="rgba(46, 63, 89, 0.9)"
+                hoverColor="#1C1D20"
+                textClassName="text-3xl"
+                iconClassName="w-8"
+                gapClassName="gap-6"
+              />
             </div>
           </div>
           <div className="font-victory-striker-sans lg:text-7xl text-5xl lg:pt-40 pt-20 flex flex-col lg:gap-6 gap-4 leading-[130%] h-full items-center lg:items-end -mx-[8%] lg:mx-auto lg:w-full">
@@ -210,12 +214,15 @@ export default function Home() {
             ))}
           </div>
           <div className="pb-24 pt-20 w-fit mx-auto">
-            <Link href="/works">
-              <div className="group text-3xl font-medium text-[#2E3F59]/90 uppercase flex flex-row items-center justify-center gap-5 hover:text-[#1C1D20] transition-colors duration-300 ease-in-out cursor-pointer">
-                More Work
-                <LinkArrowIcon className="w-8 fill-[#2E3F59]/90 group-hover:fill-[#1C1D20]" />
-              </div>
-            </Link>
+            <TextWipeLink
+              href="/works"
+              text="More Work"
+              baseColor="rgba(46, 63, 89, 0.9)"
+              hoverColor="#1C1D20"
+              textClassName="text-3xl"
+              iconClassName="w-8"
+              gapClassName="gap-5"
+            />
           </div>
         </div>
       </div>
