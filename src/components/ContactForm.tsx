@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { PointArrowIcon } from './icons/PointArrowIcon';
 
 const ContactForm = () => {
+  const submitRef = useRef<HTMLButtonElement>(null);
+
+  const updatePointer = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const el = submitRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const dx = Math.max(x, rect.width - x);
+    const dy = Math.max(y, rect.height - y);
+    const radius = Math.sqrt(dx * dx + dy * dy);
+    el.style.setProperty('--x', `${x}px`);
+    el.style.setProperty('--y', `${y}px`);
+    el.style.setProperty('--r', `${radius}px`);
+  };
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-10">
@@ -39,12 +54,42 @@ const ContactForm = () => {
         </div>
       </div>
       <div className="flex flex-col items-end justify-center">
-        <div className="group flex flex-row gap-3 text-[#F8D752] hover:text-[#F3F9FF] cursor-pointer">
-          <h6 className="text-xl xl:text-2xl font-base transition-colors duration-300 tracking-tight">
-            SUBMIT
-          </h6>
-          <PointArrowIcon className="w-6 h-8 xl:w-8 xl:h-8 group-hover:fill-[#F3F9FF] fill-[#F8D752]" />
-        </div>
+        <button
+          ref={submitRef}
+          type="submit"
+          onMouseEnter={updatePointer}
+          onMouseLeave={updatePointer}
+          className="submit-wipe group relative flex flex-row items-center gap-3 cursor-pointer transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-105 active:scale-95"
+        >
+          {/* Base layer */}
+          <span className="relative flex flex-row items-center gap-3 text-[#F8D752]">
+            <h6 className="text-xl xl:text-2xl font-base transition-colors duration-300 tracking-tight">
+              SUBMIT
+            </h6>
+            <PointArrowIcon className="w-6 h-8 xl:w-8 xl:h-8 fill-[#F8D752]" />
+          </span>
+          {/* Overlay layer, revealed via clip-path from cursor */}
+          <span className="wipe-layer absolute inset-0 flex flex-row items-center gap-3 text-[#F3F9FF] pointer-events-none">
+            <h6 className="text-xl xl:text-2xl font-base transition-colors duration-300 tracking-tight">
+              SUBMIT
+            </h6>
+            <PointArrowIcon className="w-6 h-8 xl:w-8 xl:h-8 fill-[#F3F9FF]" />
+          </span>
+          <style jsx>{`
+            .submit-wipe {
+              --x: 50%;
+              --y: 50%;
+              --r: 0px;
+            }
+            .wipe-layer {
+              clip-path: circle(0px at var(--x) var(--y));
+              transition: clip-path 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .submit-wipe:hover .wipe-layer {
+              clip-path: circle(var(--r) at var(--x) var(--y));
+            }
+          `}</style>
+        </button>
       </div>
     </div>
   );
