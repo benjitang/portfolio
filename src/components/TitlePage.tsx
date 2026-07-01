@@ -56,7 +56,7 @@ export default function TitlePage() {
           <Link href="/contact">
             <div className="group text-2xl font-medium text-[#F8D752] uppercase hidden lg:flex flex-row items-center justify-center gap-4 hover:text-[#F3F9FF] transition-colors duration-300 ease-in-out cursor-pointer">
               Get in Touch
-              <LinkArrowIcon className="w-7" />
+              <LinkArrowIcon className="w-7 fill-[#F8D752] group-hover:fill-[#F3F9FF]" />
             </div>
           </Link>
           <div className="lg:h-60 h-45">

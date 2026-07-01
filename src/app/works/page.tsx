@@ -205,11 +205,11 @@ const Works = () => {
               transition={{ duration: 0.35, ease: 'easeOut' }}
             >
               <ProjectCard
-  key={project.id}
-  project={project}
-  color={randomColors[project.id % randomColors.length]}
-  imageName={randomImages[project.id % randomImages.length]}
-/>
+                key={project.id}
+                project={project}
+                color={randomColors[project.id % randomColors.length]}
+                imageName={randomImages[project.id % randomImages.length]}
+              />
             </motion.div>
           ))}
         </AnimatePresence>
