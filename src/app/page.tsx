@@ -155,7 +155,7 @@ export default function Home() {
       <div className="bg-[#F3F9FF] px-[8%] mx-auto">
         <div className="flex flex-col justify-center pt-24 lg:pb-40 pb-28">
           <div className="lg:pt-20 pt-16 flex flex-col gap-19 lg:gap-0 lg:flex-row justify-between items-center">
-            <div className="flex flex-row lg:gap-28 justify-between lg:justify-start w-full">
+            <div className="flex flex-col lg:flex-row gap-20 lg:gap-28 lg:justify-start w-full">
               <div className="flex flex-col lg:gap-6 gap-4">
                 <h1 className="font-victory-striker-sans lg:text-9xl text-8xl text-[#274D6F]">
                   30+
@@ -195,7 +195,7 @@ export default function Home() {
         </div>
 
         <div className="pt-20">
-          <h3 className="lg:text-7xl text-6xl font-victory-striker-sans text-[#2E3F59]">
+          <h3 className="lg:text-7xl text-6xl font-victory-striker-sans text-[#2E3F59] leading-[140%]">
             {' '}
             Recent Projects{' '}
           </h3>
