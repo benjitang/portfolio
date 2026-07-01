@@ -93,25 +93,25 @@ export const randomImages = [
 ];
 
 export const aboutMe = [
-  'I am a full stack developer currently trying to find work. I am a recent grad of Stony Brook University with a Computer Science Degree. I am looking for any work to improve and grow myself.',
-  'I am a full stack developer currently trying to find work. I am a recent grad of Stony Brook University with a Computer Science Degree. I am looking for any work to improve and grow myself.',
+  'I’m a Software Engineer who enjoys building products that combine thoughtful design with practical technology. Through internships, projects, and hands-on experience, I’ve developed applications across the stack—from responsive frontends to scalable backend systems and AI-powered features.',
+  'I work primarily with TypeScript, React, Next.js, and modern web technologies to turn ideas into intuitive digital experiences. I’m focused on growing as a builder, solving meaningful problems, and creating software that makes an impact.',
 ];
 
 export const services = [
   {
     title: 'Full-Stack Architecture',
     description:
-      'I am a full stack developer currently trying to find work. I am a recent grad of Stony Brook University with a Computer Science Degree. I am looking for any work to improve and grow myself.',
+      'Building modern web applications across the full stack with a focus on thoughtful design, scalable systems, and seamless user experiences.',
   },
   {
     title: 'AI & Advanced Integration',
     description:
-      'I am a full stack developer currently trying to find work. I am a recent grad of Stony Brook University with a Computer Science Degree. I am looking for any work to improve and grow myself.',
+      'Exploring AI-powered experiences through practical applications, API integrations, and building products that combine intelligence with usability.',
   },
   {
     title: '3D & Interactive Experience',
     description:
-      'I am a full stack developer currently trying to find work. I am a recent grad of Stony Brook University with a Computer Science Degree. I am looking for any work to improve and grow myself.',
+      'Creating interactive and visually engaging experiences while learning how design and technology work together to build memorable products.',
   },
 ];
 

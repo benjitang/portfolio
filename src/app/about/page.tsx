@@ -36,7 +36,7 @@ const About = () => {
             </h2>
             <div className="flex flex-col lg:gap-16 gap-12 lg:pt-16 pt-20">
               {aboutMe.map((paragraph, index) => (
-                <h5 key={index} className="lg:text-2xl text-xl text-[#354156]">
+                <h5 key={index} className="lg:text-2xl text-xl text-[#2E3F59]/90">
                   {paragraph}
                 </h5>
               ))}
