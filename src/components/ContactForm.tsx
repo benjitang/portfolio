@@ -28,14 +28,10 @@ const ContactForm = () => {
     const el = submitRef.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const dx = Math.max(x, rect.width - x);
-    const dy = Math.max(y, rect.height - y);
-    const radius = Math.sqrt(dx * dx + dy * dy);
-    el.style.setProperty('--x', `${x}px`);
-    el.style.setProperty('--y', `${y}px`);
-    el.style.setProperty('--r', `${radius}px`);
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    el.style.setProperty('--x', `${x}%`);
+    el.style.setProperty('--y', `${y}%`);
   };
 
   const validate = (): FormErrors => {
@@ -60,7 +56,11 @@ const ContactForm = () => {
 
     setSending(true);
     try {
-      const result = await sendContactEmail(name.trim(), email.trim(), message.trim());
+      const result = await sendContactEmail(
+        name.trim(),
+        email.trim(),
+        message.trim(),
+      );
       if (result.error) {
         throw new Error(result.error.message);
       }
@@ -71,7 +71,9 @@ const ContactForm = () => {
       setErrors({});
     } catch (err) {
       setSubmitError(
-        err instanceof Error ? err.message : 'Something went wrong. Please try again.'
+        err instanceof Error
+          ? err.message
+          : 'Something went wrong. Please try again.',
       );
     } finally {
       setSending(false);
@@ -100,9 +102,6 @@ const ContactForm = () => {
               }`}
               placeholder="YOUR NAME"
             />
-            {/* {errors.name && (
-              <span className="text-sm text-red-400">{errors.name}</span>
-            )} */}
           </div>
 
           <div className="group flex flex-1 flex-col gap-2">
@@ -123,9 +122,6 @@ const ContactForm = () => {
               }`}
               placeholder="YOUR EMAIL"
             />
-            {/* {errors.email && (
-              <span className="text-sm text-red-400">{errors.email}</span>
-            )} */}
           </div>
         </div>
         <div className="group flex flex-1 flex-col gap-2">
@@ -146,9 +142,6 @@ const ContactForm = () => {
             }`}
             placeholder="YOUR MESSAGE"
           />
-          {/* {errors.message && (
-            <span className="text-sm text-red-400">{errors.message}</span>
-          )} */}
         </div>
       </div>
 
@@ -163,34 +156,54 @@ const ContactForm = () => {
           disabled={sending}
           onMouseEnter={updatePointer}
           onMouseLeave={updatePointer}
-          className="submit-wipe group relative flex flex-row items-center gap-3 cursor-pointer transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none"
+          className="submit-button group relative flex flex-row items-center gap-3 rounded-full px-8 py-4 overflow-hidden cursor-pointer transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 hover:-translate-y-1 active:scale-90 active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none"
         >
-          {/* Base layer */}
-          <span className="relative flex flex-row items-center gap-3 text-[#F8D752]">
-            <h6 className="text-xl xl:text-2xl font-base transition-colors duration-300 tracking-tight">
+          <span className="fill relative z-10 flex flex-row items-center gap-3">
+            <h6 className="text-xl xl:text-2xl font-base tracking-tight">
               {sending ? 'SENDING...' : 'SUBMIT'}
             </h6>
-            <PointArrowIcon className="w-6 h-8 xl:w-8 xl:h-8 fill-[#F8D752]" />
-          </span>
-          {/* Overlay layer, revealed via clip-path from cursor */}
-          <span className="wipe-layer absolute inset-0 flex flex-row items-center gap-3 text-[#F3F9FF] pointer-events-none">
-            <h6 className="text-xl xl:text-2xl font-base transition-colors duration-300 tracking-tight">
-              {sending ? 'SENDING...' : 'SUBMIT'}
-            </h6>
-            <PointArrowIcon className="w-6 h-8 xl:w-8 xl:h-8 fill-[#F3F9FF]" />
+            <PointArrowIcon className="w-6 h-8 xl:w-8 xl:h-8" />
           </span>
           <style jsx>{`
-            .submit-wipe {
+            .submit-button {
               --x: 50%;
               --y: 50%;
-              --r: 0px;
+              border: 1px solid #2e3f59;
             }
-            .wipe-layer {
-              clip-path: circle(0px at var(--x) var(--y));
+            .submit-button::before {
+              content: '';
+              position: absolute;
+              inset: 0;
+              background: #1c1d20;
+              clip-path: circle(0% at var(--x) var(--y));
               transition: clip-path 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+              z-index: 0;
             }
-            .submit-wipe:hover .wipe-layer {
-              clip-path: circle(var(--r) at var(--x) var(--y));
+            .submit-button:hover::before {
+              clip-path: circle(150% at var(--x) var(--y));
+            }
+            .submit-button:hover {
+              border-color: #1c1d20;
+            }
+            .fill {
+              color: #2e3f59;
+              transition: color 0.4s ease;
+            }
+            .fill :global(svg) {
+              fill: #2e3f59;
+              stroke: #2e3f59;
+              transition:
+                fill 0.4s ease,
+                stroke 0.4s ease;
+              position: relative;
+              z-index: 1;
+            }
+            .submit-button:hover .fill {
+              color: #f3f9ff;
+            }
+            .submit-button:hover .fill :global(svg) {
+              fill: #f3f9ff;
+              stroke: #f3f9ff;
             }
           `}</style>
         </button>
@@ -198,25 +211,27 @@ const ContactForm = () => {
 
       {showSuccess && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+          className="fixed inset-0 z-1000 flex items-center justify-center bg-black/60"
           onClick={() => setShowSuccess(false)}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-[#F3F9FF] rounded-2xl px-10 py-12 flex flex-col items-center gap-6 max-w-sm mx-4 text-center"
+            className="bg-[#F3F9FF] rounded-xl px-8 py-16 flex flex-col items-center gap-10 lg:gap-8 max-w-sm mx-4 text-center"
           >
-            <h4 className="text-2xl font-medium text-[#2E3F59]">
+            <h4 className="text-4xl font-medium text-[#2E3F59]">
               Message sent!
             </h4>
-            <p className="text-[#354156]">
+            <p className="text-[#354156] text-xl">
               Thanks for reaching out — I&apos;ll get back to you soon.
             </p>
-            <button
-              onClick={() => setShowSuccess(false)}
-              className="mt-2 px-6 py-3 rounded-full bg-[#1C1D20] text-[#F3F9FF] cursor-pointer"
-            >
-              Close
-            </button>
+            <div className="pt-4 lg:pt-8">
+              <button
+                onClick={() => setShowSuccess(false)}
+                className="load-more-button relative font-medium text-xl lg:text-2xl border bg-[#1C1D20] border-[#354156] text-[#F3F9FF] px-10 py-5 rounded-full overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-105 active:scale-95 cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
