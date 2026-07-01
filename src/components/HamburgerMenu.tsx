@@ -35,7 +35,7 @@ const HamburgerMenu = ({
       : color;
   return (
     <button
-      className={`relative flex justify-center items-center bg-transparent border-none cursor-pointer transition-colors lg:px-[3.5em] px-4 pb-3 lg:pb-8 ${mixBlend ? 'mix-blend-difference' : ''} ${className}`}
+      className={`relative flex justify-center items-center bg-transparent border-none cursor-pointer transition-colors transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 hover:-translate-y-1 active:scale-90 active:translate-y-0 lg:px-[3.5em] px-4 pb-3 lg:pb-8 ${mixBlend ? 'mix-blend-difference' : ''} ${className}`}
       style={{ width: size, height: size }}
       onClick={() => setOpen(!open)}
       onMouseEnter={() => setIsHovered(true)}

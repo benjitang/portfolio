@@ -19,7 +19,7 @@ const Logo = ({ open, setOpen, className, fixed }: LogoProps) => {
     <Link
       href="/"
       onClick={() => setOpen(false)}
-      className="inline-flex items-center justify-center"
+      className="inline-flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 hover:-translate-y-1 active:scale-90 active:translate-y-0"
     >
       <LogoIcon
         className={`${colorClass} lg:w-20 lg:h-20 w-16 h-16 ${className ?? ''}`.trim()}

@@ -149,30 +149,32 @@ const Navbar = ({ fixed = false }: { fixed?: boolean }) => {
 
   return (
     <>
-      <nav className={navbarClasses}>
-        <Logo open={open} setOpen={handleOpen} fixed={fixed} />
-        <HamburgerMenu
-          open={open}
-          setOpen={handleOpen}
-          size={56}
-          color={fixed && !open ? '#FFFFFF' : '#F8D752'}
-          hoverColor={fixed && !open ? 'oklch(83.7% 0.128 66.29)' : '#F3F9FF'}
-          activeColor="#F3F9FF"
-          className="lg:block hidden"
-          mixBlend={fixed}
-        />
-        <HamburgerMenu
-          open={open}
-          setOpen={handleOpen}
-          size={44}
-          barHeight={3}
-          color={fixed && !open ? '#FFFFFF' : '#F8D752'}
-          hoverColor={fixed && !open ? 'oklch(83.7% 0.128 66.29)' : '#F3F9FF'}
-          activeColor="#F3F9FF"
-          className="lg:hidden block"
-          mixBlend={fixed}
-        />
-      </nav>
+      {(!open || visible) && (
+        <nav className={navbarClasses}>
+          <Logo open={open} setOpen={handleOpen} fixed={fixed} />
+          <HamburgerMenu
+            open={open}
+            setOpen={handleOpen}
+            size={56}
+            color={fixed && !open ? '#FFFFFF' : '#F8D752'}
+            hoverColor={fixed && !open ? 'oklch(83.7% 0.128 66.29)' : '#F3F9FF'}
+            activeColor="#F3F9FF"
+            className="lg:block hidden"
+            mixBlend={fixed}
+          />
+          <HamburgerMenu
+            open={open}
+            setOpen={handleOpen}
+            size={44}
+            barHeight={3}
+            color={fixed && !open ? '#FFFFFF' : '#F8D752'}
+            hoverColor={fixed && !open ? 'oklch(83.7% 0.128 66.29)' : '#F3F9FF'}
+            activeColor="#F3F9FF"
+            className="lg:hidden block"
+            mixBlend={fixed}
+          />
+        </nav>
+      )}
 
       {visible && (
         <div
