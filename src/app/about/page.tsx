@@ -7,13 +7,13 @@ const About = () => {
     <div className="bg-[#F3F9FF] min-h-screen px-[8%] mx-auto overflow-x-hidden">
       <div className="flex flex-col justify-center py-40 pt-56 pb-48 xl:pb-56">
         <div className="font-victory-striker-sans lg:text-7xl text-5xl lg:pt-24 pt-8 flex flex-col lg:gap-6 gap-4 leading-[130%] h-full items-center lg:items-end -mx-[8%] lg:mx-auto lg:w-full">
-  <h3 className="text-[#274D6F] text-center lg:text-end">
-    Learn deeply,
-  </h3>
-  <h3 className="text-[#274D6F] text-center lg:text-end">
-    Build intentionally
-  </h3>
-</div>
+          <h3 className="text-[#274D6F] text-center lg:text-end">
+            Learn deeply,
+          </h3>
+          <h3 className="text-[#274D6F] text-center lg:text-end">
+            Build intentionally
+          </h3>
+        </div>
       </div>
       <div className="flex xl:flex-row flex-col-reverse lg:gap-16 gap-4">
         <div className="flex flex-col justify-end flex-[2] w-full bg-[#AA8D52] lg:pt-40 pt-20">
@@ -36,7 +36,10 @@ const About = () => {
             </h2>
             <div className="flex flex-col lg:gap-16 gap-12 lg:pt-16 pt-20">
               {aboutMe.map((paragraph, index) => (
-                <h5 key={index} className="lg:text-2xl text-xl text-[#2E3F59]/90">
+                <h5
+                  key={index}
+                  className="lg:text-2xl text-xl text-[#2E3F59]/90"
+                >
                   {paragraph}
                 </h5>
               ))}
@@ -47,13 +50,19 @@ const About = () => {
               <h1 className="font-victory-striker-sans lg:text-9xl text-8xl text-[#274D6F]">
                 30+
               </h1>
-              <h4 className="lg:text-2xl text-xl text-[#354156]"> Projects Completed </h4>
+              <h4 className="lg:text-2xl text-xl text-[#354156]">
+                {' '}
+                Projects Completed{' '}
+              </h4>
             </div>
             <div className="flex flex-col lg:gap-6 gap-4">
               <h1 className="font-victory-striker-sans lg:text-9xl text-8xl text-[#274D6F]">
                 0+
               </h1>
-              <h4 className="lg:text-2xl text-xl text-[#354156]"> Years of Experience </h4>
+              <h4 className="lg:text-2xl text-xl text-[#354156]">
+                {' '}
+                Years of Experience{' '}
+              </h4>
             </div>
           </div>
         </div>

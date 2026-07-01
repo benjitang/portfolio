@@ -153,8 +153,52 @@ export default function Home() {
     <div className="bg-[#F3F9FF]">
       <TitlePage />
       <div className="bg-[#F3F9FF] px-[8%] mx-auto">
+        <div className="flex flex-col justify-center pt-24 pb-40">
+          <div className="pt-20 flex justify-between items-center">
+            <div className="flex flex-row gap-28">
+              <div className="flex flex-col lg:gap-6 gap-4">
+                <h1 className="font-victory-striker-sans lg:text-9xl text-8xl text-[#274D6F]">
+                  30+
+                </h1>
+                <h4 className="lg:text-2xl text-xl text-[#354156]">
+                  {' '}
+                  Projects Completed{' '}
+                </h4>
+              </div>
+              <div className="flex flex-col lg:gap-6 gap-4">
+                <h1 className="font-victory-striker-sans lg:text-9xl text-8xl text-[#274D6F]">
+                  0+
+                </h1>
+                <h4 className="lg:text-2xl text-xl text-[#354156]">
+                  {' '}
+                  Years of Experience{' '}
+                </h4>
+              </div>
+            </div>
+            <div>
+              <Link href="/about">
+              <div className="group text-3xl font-medium text-[#2E3F59]/90 uppercase flex flex-row items-center justify-center gap-6 hover:text-[#1C1D20] transition-colors duration-300 ease-in-out cursor-pointer">
+                More About
+                <LinkArrowIcon className="w-8 fill-[#2E3F59]/90 group-hover:fill-[#1C1D20]" />
+              </div>
+            </Link>
+            </div>
+          </div>
+          <div className="font-victory-striker-sans lg:text-7xl text-5xl lg:pt-40 pt-8 flex flex-col lg:gap-6 gap-4 leading-[130%] h-full items-center lg:items-end -mx-[8%] lg:mx-auto lg:w-full">
+            <h3 className="text-[#274D6F] text-center lg:text-end">
+              Learn deeply,
+            </h3>
+            <h3 className="text-[#274D6F] text-center lg:text-end">
+              Build intentionally
+            </h3>
+          </div>
+        </div>
+
         <div className="pt-20">
-          <h3 className="lg:text-7xl text-6xl font-victory-striker-sans text-[#2E3F59]"> Recent Projects </h3>
+          <h3 className="lg:text-7xl text-6xl font-victory-striker-sans text-[#2E3F59]">
+            {' '}
+            Recent Projects{' '}
+          </h3>
           <div className="pt-4 grid grid-cols-1 lg:grid-cols-2 gap-12 mt-14 bg-[#F3F9FF]">
             {projects.slice(0, 2).map((project) => (
               <ProjectCard
@@ -165,13 +209,13 @@ export default function Home() {
               />
             ))}
           </div>
-          <div className="pb-24 pt-16 w-fit mx-auto">
+          <div className="pb-24 pt-20 w-fit mx-auto">
             <Link href="/works">
-            <div className="group text-2xl font-medium text-[#2E3F59]/90 uppercase flex flex-row items-center justify-center gap-4 hover:text-[#1C1D20] transition-colors duration-300 ease-in-out cursor-pointer">
-              More Work
-              <LinkArrowIcon className="w-7 fill-[#2E3F59]/90 group-hover:fill-[#1C1D20]" />
-            </div>
-          </Link>
+              <div className="group text-3xl font-medium text-[#2E3F59]/90 uppercase flex flex-row items-center justify-center gap-5 hover:text-[#1C1D20] transition-colors duration-300 ease-in-out cursor-pointer">
+                More Work
+                <LinkArrowIcon className="w-8 fill-[#2E3F59]/90 group-hover:fill-[#1C1D20]" />
+              </div>
+            </Link>
           </div>
         </div>
       </div>
