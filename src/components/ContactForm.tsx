@@ -149,6 +149,14 @@ const ContactForm = () => {
         <p className="text-sm text-red-400 text-right">{submitError}</p>
       )}
 
+      {submitError && (
+        <p className="text-sm text-red-400 text-right">{submitError}</p>
+      )}
+
+      {submitError && (
+        <p className="text-sm text-red-400 text-right">{submitError}</p>
+      )}
+
       <div className="flex flex-col items-end justify-center">
         <button
           ref={submitRef}
@@ -156,54 +164,34 @@ const ContactForm = () => {
           disabled={sending}
           onMouseEnter={updatePointer}
           onMouseLeave={updatePointer}
-          className="submit-button group relative flex flex-row items-center gap-3 rounded-full px-8 py-4 overflow-hidden cursor-pointer transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 hover:-translate-y-1 active:scale-90 active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none"
+          className="submit-wipe group relative flex flex-row items-center gap-3 cursor-pointer transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-105 active:scale-95 disabled:opacity-50 disabled:pointer-events-none"
         >
-          <span className="fill relative z-10 flex flex-row items-center gap-3">
-            <h6 className="text-xl xl:text-2xl font-base tracking-tight">
+          {/* Base layer */}
+          <span className="relative flex flex-row items-center gap-3 text-[#F8D752]">
+            <h6 className="text-xl xl:text-2xl font-base transition-colors duration-300 tracking-tight">
               {sending ? 'SENDING...' : 'SUBMIT'}
             </h6>
-            <PointArrowIcon className="w-6 h-8 xl:w-8 xl:h-8" />
+            <PointArrowIcon className="w-6 h-8 xl:w-8 xl:h-8 fill-[#F8D752]" />
+          </span>
+          {/* Overlay layer, revealed via clip-path from cursor */}
+          <span className="wipe-layer absolute inset-0 flex flex-row items-center gap-3 text-[#F3F9FF] pointer-events-none">
+            <h6 className="text-xl xl:text-2xl font-base transition-colors duration-300 tracking-tight">
+              {sending ? 'SENDING...' : 'SUBMIT'}
+            </h6>
+            <PointArrowIcon className="w-6 h-8 xl:w-8 xl:h-8 fill-[#F3F9FF]" />
           </span>
           <style jsx>{`
-            .submit-button {
+            .submit-wipe {
               --x: 50%;
               --y: 50%;
-              border: 1px solid #2e3f59;
+              --r: 0px;
             }
-            .submit-button::before {
-              content: '';
-              position: absolute;
-              inset: 0;
-              background: #1c1d20;
-              clip-path: circle(0% at var(--x) var(--y));
+            .wipe-layer {
+              clip-path: circle(0px at var(--x) var(--y));
               transition: clip-path 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-              z-index: 0;
             }
-            .submit-button:hover::before {
-              clip-path: circle(150% at var(--x) var(--y));
-            }
-            .submit-button:hover {
-              border-color: #1c1d20;
-            }
-            .fill {
-              color: #2e3f59;
-              transition: color 0.4s ease;
-            }
-            .fill :global(svg) {
-              fill: #2e3f59;
-              stroke: #2e3f59;
-              transition:
-                fill 0.4s ease,
-                stroke 0.4s ease;
-              position: relative;
-              z-index: 1;
-            }
-            .submit-button:hover .fill {
-              color: #f3f9ff;
-            }
-            .submit-button:hover .fill :global(svg) {
-              fill: #f3f9ff;
-              stroke: #f3f9ff;
+            .submit-wipe:hover .wipe-layer {
+              clip-path: circle(var(--r) at var(--x) var(--y));
             }
           `}</style>
         </button>
