@@ -27,7 +27,10 @@ const Works = () => {
         if (!cancelled) setProjects(data);
       })
       .catch((err) => {
-        if (!cancelled) setError(err instanceof Error ? err.message : 'Failed to load projects');
+        if (!cancelled)
+          setError(
+            err instanceof Error ? err.message : 'Failed to load projects',
+          );
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -42,7 +45,7 @@ const Works = () => {
 
   const updatePointer = (
     e: React.MouseEvent<HTMLElement>,
-    ref: React.RefObject<HTMLElement | null>
+    ref: React.RefObject<HTMLElement | null>,
   ) => {
     const el = ref.current;
     if (!el) return;
@@ -129,23 +132,26 @@ const Works = () => {
                   />
                 </motion.div>
               ) : (
-                <motion.div
+                <motion.a
                   key={project.id}
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   layout
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 12 }}
                   transition={{ duration: 0.25, ease: 'easeOut' }}
-                  className="border-b border-[#2E3F59]/40 pb-8 pt-8 flex justify-between items-center"
+                  className="group border-b border-[#2E3F59]/40 pb-8 pt-8 px-6 -mx-6 flex justify-between items-center transition-colors duration-300 hover:bg-[#1C1D20]"
                 >
-                  <h5 className="lg:text-2xl text-xl text-[#354156]">
+                  <h5 className="lg:text-2xl text-xl text-[#354156] transition-colors duration-300 group-hover:text-[#F3F9FF]">
                     {project.title}
                   </h5>
-                  <span className="lg:text-2xl text-xl  text-[#354156]">
+                  <span className="lg:text-2xl text-xl text-[#354156] transition-colors duration-300 group-hover:text-[#F3F9FF]">
                     {project.year}
                   </span>
-                </motion.div>
-              )
+                </motion.a>
+              ),
             )}
           </AnimatePresence>
         </motion.div>
