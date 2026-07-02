@@ -8,8 +8,7 @@ import defaultComputer07 from '../public/defaultComputer07.jpg';
 import type { StaticImageData } from 'next/image';
 // add more here as needed
 
-
-export const github_user = "benjitang"
+export const github_user = 'benjitang';
 
 export const socials = [
   {
@@ -119,11 +118,36 @@ export const services = [
 ];
 
 export const jobs = [
-  { title: 'Software Engineer Intern', company: 'Opportunity Knocks', startYear: "2025", endYear: "2026" },
-  { title: 'Software Engineer Intern', company: 'SCIP Global Leaders', startYear: "2024", endYear: "2024" },
-  { title: 'Unavailable', company: 'Unavailable', startYear: "20XX", endYear: "20XX" },
-  { title: 'Unavailable', company: 'Unavailable', startYear: "20XX", endYear: "20XX" },
-  { title: 'Unavailable', company: 'Unavailable', startYear: "20XX", endYear: "20XX" },
+  {
+    title: 'Software Engineer Intern',
+    company: 'Opportunity Knocks',
+    startYear: '2025',
+    endYear: '2026',
+  },
+  {
+    title: 'Software Engineer Intern',
+    company: 'SCIP Global Leaders',
+    startYear: '2024',
+    endYear: '2024',
+  },
+  {
+    title: 'Unavailable',
+    company: 'Unavailable',
+    startYear: '20XX',
+    endYear: '20XX',
+  },
+  {
+    title: 'Unavailable',
+    company: 'Unavailable',
+    startYear: '20XX',
+    endYear: '20XX',
+  },
+  {
+    title: 'Unavailable',
+    company: 'Unavailable',
+    startYear: '20XX',
+    endYear: '20XX',
+  },
 ];
 
 export const education = [
@@ -136,10 +160,30 @@ export const education = [
 ];
 
 export const skills = [
-  { title: 'Languages + Frameworks', tools: [] },
-  { title: 'AI + Machine Learning', tools: [] },
-  { title: 'Databases + State', tools: [] },
-  { title: 'Devops + Cloud', tools: [] },
-  { title: '3D + Graphics', tools: [] },
-  { title: 'UI + Styling', tools: [] },
+  {
+    title: 'Languages + Frameworks',
+    tools: [
+      'TypeScript',
+      'JavaScript',
+      'React',
+      'Python',
+      'Java',
+      'SQL',
+      'Next.js',
+      'Node.js',
+      'Express.js',
+      'Fastify',
+    ],
+  },
+  {
+    title: 'AI + Machine Learning',
+    tools: ['Open AI', 'Google Generative AI'],
+  },
+  { title: 'Databases + State', tools: ['Three.js', 'GSAP'] },
+  {
+    title: 'Devops + Cloud',
+    tools: ['PostgreSQL', 'MongoDB', 'Supabase', 'Prisma'],
+  },
+  { title: '3D + Graphics', tools: ['Docker', 'Vercel'] },
+  { title: 'UI + Styling', tools: ['Tailwind CSS', 'ShadCN UI', 'Radix UI'] },
 ];
