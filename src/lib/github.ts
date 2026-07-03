@@ -37,15 +37,23 @@ export async function fetchGithubProjects(): Promise<Project[]> {
       next: { revalidate: 3600 },
     }
   );
-
   if (!res.ok) {
     throw new Error(`GitHub API error: ${res.status}`);
   }
-
   const repos: GithubRepo[] = await res.json();
 
+  const EXCLUDED_KEYWORDS = ['config', 'dotfiles'];
+
   return repos
-    .filter((repo) => !repo.fork && !repo.archived && !repo.private)
+    .filter((repo) => {
+      const name = repo.name.toLowerCase();
+      return (
+        !repo.fork &&
+        !repo.archived &&
+        !repo.private &&
+        !EXCLUDED_KEYWORDS.some((keyword) => name.includes(keyword))
+      );
+    })
     .map((repo) => ({
       id: repo.id,
       title: humanizeTitle(repo.name),
