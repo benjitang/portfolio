@@ -42,7 +42,7 @@ export async function fetchGithubProjects(): Promise<Project[]> {
   }
   const repos: GithubRepo[] = await res.json();
 
-  const EXCLUDED_KEYWORDS = ['config', 'dotfiles'];
+  const EXCLUDED_KEYWORDS = ['config', 'dotfiles', 'sandbox'];
 
   return repos
     .filter((repo) => {
